@@ -1,0 +1,608 @@
+% Mathe Formelsammlung für HM1 SoSe 2011
+% 2 Seiten
+
+% Dokumenteinstellungen
+% ======================================================================	
+
+% Dokumentklasse (Schriftgröße 6, DIN A4, Artikel)
+\documentclass[6pt,a4paper]{scrartcl}
+
+% Pakete laden
+\usepackage[utf8]{inputenc}		% Zeichenkodierung: UTF-8 (für Umlaute)   
+\usepackage[german]{babel}		% Deutsche Sprache
+\usepackage{multicol}			% Spaltenpaket
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}				% erweiterte Integralsymbole
+\usepackage{multicol}			% ermöglicht Seitenspalten  
+\usepackage{wasysym}			% Blitz
+\usepackage{graphicx}
+      
+% Seitenlayout und Ränder:
+\usepackage{geometry}
+\geometry{a4paper,landscape, left=6mm,right=6mm, top=0mm, bottom=3mm,includeheadfoot} 
+
+%Kopf- und Fußzeile
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+   \fancyfoot[C]{von Emanuel Regnath (Emanuel.Regnath@tum.de) und Martin Zellner (Martin.Zellner@mytum.de) - SoSe EI 2011}
+   \renewcommand{\headrulewidth}{0.0pt} %obere Linie ausblenden
+   \renewcommand{\footrulewidth}{0.1pt} %obere Linie ausblenden
+
+   \fancyfoot[R]{Stand: \today \qquad \thepage}
+   \fancyfoot[L]{Evtl. Fehler bitte sofort melden!!!!einself!!}
+	
+% Schriftart SANS für bessere Lesbarkeit bei kleiner Schrift
+\renewcommand{\familydefault}{\sfdefault} 
+
+
+% Custom Commands
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\newcommand{\me}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\dme}[2]{\ensuremath{\left\{#1\,\vert\,#2 \right\}}}
+\newcommand{\abs}[1]{\ensuremath{\left\vert#1\right\vert}}
+\newcommand{\un}[1]{\; \unit{#1} }
+\newcommand{\unf}[2]{\;\left[ \unitfrac{#1}{#2} \right]}
+\newcommand{\norm}[2][\relax]{\ifx#1\relax \ensuremath{\left\Vert#2\right\Vert}\else \ensuremath{\left\Vert#2\right\Vert_{#1}}\fi}
+\newcommand{\enbrace}[1]{\ensuremath{\left(#1\right)}}
+\newcommand{\nira}[1]{\ensuremath{\overset{n \rightarrow \infty}{\longrightarrow}}}
+\newcommand{\os}[2]{\ensuremath{\overset{#1}{#2}}}
+\makeatletter
+\newcommand{\Ra}[0]{\ensuremath{\Rightarrow}}
+\newcommand{\ra}[0]{\ensuremath{\rightarrow}}
+\newcommand{\gk}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\sprod}[2]{\ensuremath{%
+  \setbox0=\hbox{\ensuremath{#2}}
+  \dimen@\ht0
+  \advance\dimen@ by \dp0
+  \left\langle #1\rule[-\dp0]{0pt}{\dimen@},#2\right\rangle}}
+
+% Dokumentbeginn
+% ======================================================================
+\begin{document}
+%\section{}
+% ----------------------------------------------------------------------
+
+% Aufteilung in Spalten
+\begin{multicols}{4}
+      
+\subsection{Allgemeines} % (fold)
+\label{sub:allgemeines}
+
+Dreiecksungleichung \qquad \qquad \qquad
+\begin{math}\begin{array}{l}
+	\abs{x + y} \le \abs{x} + \abs{y} \\
+	\abs{\abs{x}- \abs{y}} \le \abs{x-y} 
+\end{array}\end{math} \\
+Cauchy-Schwarz-Ungleichung: \qquad 
+\begin{math}\begin{array}{l}
+\left| \sprod{x}{y} \right| \le \| x\| \cdot \| y\|
+\end{array}\end{math} \\
+\\
+Arithmetische Summenformel \qquad
+\begin{math}\begin{array}{l}
+	\sum\limits_{k = 1}^{n}k = \frac{n (n+1)}{2}
+\end{array}\end{math}  \\
+\\
+Geometrische Summenformel \qquad 
+\begin{math}\begin{array}{l}
+	\sum\limits_{k = 0}^{n}q^k = \frac{1 - q^{n+1}}{1-q}
+\end{array}\end{math}\\
+\\                                   
+Bernoulli-Ungleichung \qquad \qquad \quad
+\begin{math}\begin{array}{l}
+	(1+a)^n \ge 1 + na
+\end{array}\end{math}\\   
+\\
+Binomialkoeffizient \qquad \qquad \qquad
+\begin{math}\begin{array}{l}
+	\binom{n}{k} = \frac{n!}{k!(n-k)!}  \\
+	\binom{n}{0} = \binom{n}{n} = 1
+\end{array}\end{math}\\ 
+\\                   
+Binomische Formel \qquad \qquad \qquad 
+\begin{math}\begin{array}{l}
+	(a+b)^n = \sum\limits_{k = 0}^{n} \binom{n}{k} a^{n-k} b^{k}
+\end{array}\end{math}   \\ 
+\\
+Wichtige Zahlen: $\sqrt{2} = 1,41421$\quad $\pi=$ ist genau 3 \quad $e = 2,71828$ \quad $\pi =  3,14159$ \quad $div B = 42!$
+
+\paragraph{Fakultäten} % (fold)
+\label{par:fakultaeten}
+$n! = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot n$ \qquad  $0! = 1! = 1$ \\
+		
+
+% paragraph fakultäten (end)
+% subsubsection subsection_name (end)
+% subsection allgemeines (end)
+
+
+\subsection{Mengen}
+% ----------------------------------------------------------------------
+
+Eine Zusammenfassung wohlunterschiedener Elemente zu einer Menge\\
+explizite Angabe: $A=\{1;2;3\}$\\
+Angabe durch Eigenschaft: $A=\{n\in\mathbb N\ \vert\ 0<n<4\}$\\
+\subsubsection{Für alle Mengen A,B,C gilt:}
+\begin{enumerate}\itemsep-1pt
+\item $\emptyset \subseteq B $
+\item $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$
+\item $(A \cap B) \cap C = A \cap (B \cap C)$\\
+	$(A \cup B) \cup C = A \cup (B \cup C)$
+\item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \\
+	A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
+\end{enumerate}
+
+
+$\mathbb Q=\{\frac{p}{q}\ \vert\ p\in\mathbb Z; q\in\mathbb N\}$\\
+\\
+Jede rationale Zahl $\frac m n \in \mathbb Q$ hat ein Dezimaldarstellung.\\
+$0,25\overline{54} =: a \rightarrow 10000a - 100a = 2554 -25 \Rightarrow a(9900) = 2529 \qquad \Rightarrow a = \frac{2529}{9900} = \frac{281}{1100}$
+
+\subsection{Vollständige Induktion}
+Behauptung: $f(n)=g(n)$ für $n_0 \le n \in \mathbb N$\\ 
+IA: $n=n_0$: \quad Zeige $f(n_0)=g(n_0)=$wahr.\\
+IV: Behauptung gilt für ein beliebiges $n\in\mathbb N$ \quad (Sei $f(n)=$wahr)\\
+IS: $n \rightarrow n+1$: \quad Zeige $f(n+1)=\underset{=wahr}{f(n)}  \dotsc=g(n+1)$
+
+\subsection{Komplexe Zahlen}
+% ----------------------------------------------------------------------
+Eine komplexe Zahl $z=a+b\mathbf{i},\ z\in \mathbb C a,b \in \mathbb R$ besteht aus einem Realteil $\Re(z)=a$ und einem Imaginärteil $\Im(z)=b$, wobei $\mathbf{i}=\sqrt{-1}$ die immaginären Einheit ist.
+Es gilt: \quad $i^2 = -1$ \quad $i^4 = 1$
+\subsubsection{Kartesische Koordinaten}
+Rechenregeln:\\
+$z_1+z_2=(a_1+a_2)+(b_1+b_2)\mathbf{i}$\\
+$z_1\cdot z_2=(a_1\cdot a_2-b_1\cdot b_2)+(a_1\cdot b_2+a_2\cdot b_1)\mathbf{i}$\\
+\\
+Konjugiertes Element von $z=a+b\mathbf{i}$:\\
+$\overline{z}=a-b\mathbf{i}$\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad $e^{\overline{ix}} = e^{-ix}$  \\
+$z\overline{z}=|z|^2=a^2+b^2$\\
+\\
+Inverses Element:\\
+$z^{-1}=\frac{\overline z}{\overline z z}=\frac{\overline z}{a^2+b^2}=\frac{a}{a^2+b^2} - \frac{b}{a^2+b^2}\mathbf{i}$
+
+
+\subsubsection{Polarkoordinaten}
+$z=a+b\mathbf{i}\ne0$\ in Polarkoordinaten:\\
+$z=r (\cos(\varphi)+\mathbf{i}\sin(\varphi))=r\cdot e^{\varphi \mathbf{i}}$\\
+$r=|z|=\sqrt{a^2+b^2}\quad\varphi=\arg(z)=\begin{cases}+\arccos \left( \frac{a}{r}\right),  & b\ge0   \\  -\arccos \left( \frac{a}{r}\right), & b<0\end{cases}$
+
+\begin{description}\itemsep0pt
+\item[Multiplikation:] $z_1\cdot z_2=r_1 * r_2 ( \cos ( \varphi_1 + \varphi_2) + \mathbf{i} \sin (\varphi_1 + \varphi_2))$
+\item[Division:] $\frac{z_1}{z_2}=\frac{r_1}{r_2} ( \cos ( \varphi_1 - \varphi_2) + \mathbf{i} \sin (\varphi_1 - \varphi_2))$
+\item[n-te Potenz:] $z^n=r^n\cdot e^{n\varphi \mathbf{i}}= r^n (\cos (n \varphi) + \mathbf{i} \sin (n \varphi))$
+\item[n-te Wurzel:] $\sqrt[n]{z}= z_k = \sqrt[n]{r} \left(\cos \left(\frac{\varphi + 2k\pi}{n}\right) + \mathbf{i} \sin \left(\frac{\varphi + 2k\pi}{n}\right)\right) \\ k =0,1, \ldots, n-1$
+\item[Logarithmus:] $\ln(z)=\ln(r) + \mathbf{i}(\varphi + 2k\pi)$ \quad (Nicht eindeutig!)
+\end{description}
+Anmerkung: Addition in kartesische Koordinaten umrechnen(leichter)!
+
+\subsection{Funktionen}
+Eine Funktion $f$ ist eine Abbildung, die jedem Element $x$ einer Definitionsmenge $D$ genau ein Element $y$ einer Wertemenge $W$ zuordnet.\\
+$f:D\rightarrow W,\ x \mapsto f(x):=y$\\
+\\
+\textbf{Injektiv}: $f(x_1)=f(x_2) \Rightarrow x_1=x_2$\\
+\textbf{Surjektiv}: $\forall y\in W \exists x\in D:f(x)=y$\\ \quad (Alle Werte aus $W$ werden angenommen.)\\
+\textbf{Bijektiv}: $f$ ist injektiv und surjektiv $\Rightarrow$ $f$ umkehrbar.
+
+\subsubsection{Symmetrie einer Funktion $f$}
+\textbf{Achsensymmetrie}(gerade Funktion): $f(-x)=f(x)$\\
+\textbf{Punktsymmetrie}(ungerade Funktion): $f(-x)=-f(x)$\\
+\\
+Regeln für gerade Funktion $g$ und ungerade Funktion $u$:\\
+$g_1 \pm g_2 = g_3$ \qquad $u_1 \pm u_2 = u_3$\\
+$g_1 \cdot g_2=g_3$ \qquad $u_1 \cdot u_2 = g_3$ \qquad $u_1 \cdot g_1=u_3$
+
+\subsubsection{Extrema, Monotonie und Krümmung von $f$}
+$f'(x_0)\overset{!}{=}0 \quad \begin{cases}f''(x_0)<0 \ \rightarrow \ \text{Maximum (lokal)} \\ f''(x_0)>0 \ \rightarrow \ \text{Minimum (lokal)}\end{cases} $\\
+$f'(x) \underset{(>)}{^{\ge}} / \underset{(<)}{^{\le}} 0 \ \rightarrow$ \ $f$ (streng) Monoton steigend/fallend. $x\in[a,b]$\\
+$f''(x) \underset{(>)}{^{\ge}} / \underset{(<)}{^{\le}} 0 \ \rightarrow$ \ $f$ (strikt) konvex/konkav. $x\in[a,b]$\\
+
+\subsubsection{Asymptoten von $f$}
+Horizontal: $c=\lim\limits_{x\ra \pm \infty} f(x)$\\
+Vertikal: $\exists \text{ Nullstelle } a \text{ des Nenners }: \lim\limits_{x \rightarrow a^{\pm}} f(x) = \pm \infty$\\
+Polynomasymptote $P(x)$: $f(x):=\frac{A(x)}{Q(x)}=P(x)+ \underset{\ra 0}{\frac{B(x)}{Q(x)}}$
+
+
+\subsubsection{Wichtige Sätze für \underline{stetige} Fkt. $f: [a,b] \rightarrow \mathbb R, f \mapsto f(x)$ }
+\textbf{Zwischenwertsatz:} $\forall y \in [f(a),f(b)]\ \exists x\in [a,b]:f(x)=y$\\
+\textbf{Mittelwertsatz:} Falls $f$ diffbar, dann $\exists x_0:f'(x_0)=\frac{f(b)-f(a)}{b-a}$\\
+\textbf{Satz von Rolle:} Falls $f(a)=f(b)$, dann $\exists x_0: f' (x_0) = 0$\\
+\textbf{Regel von L'Hospital}: (Falls $\exists$ ein Grenzwert) \\ $\lim\limits_{x \rightarrow a} \frac{f(x)}{g(x)} \rightarrow \left[ \frac{0}{0} \right] / \left[ \frac{\infty}{\infty} \right] = \lim\limits_{x \rightarrow a} \frac{f'(x)}{g'(x)}$
+
+% ----------------------------------------------------------------------
+\subsubsection{Polynome $P(x)\in\mathbb R[x]_n$}
+$P(x)=\sum_{i=0}^n a_ix^i=a_n x^n+a_{n-1} x^{n-1}+\dotsc+a_1x+a_0$ \\
+Lösungen für $ax^2+bx+c=0$ \\
+\begin{tabular}{l|l}
+Mitternachtsformel:  &  Satz von Vieta:\\
+$x_{1/2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$  \quad & \quad   $x_1 + x_2 = - \frac{b}{a} \qquad x_1 x_2 = \frac{c}{a}$
+\end{tabular}
+
+\subsubsection{Trigonometrische Funktionen}
+$f(t)=A\cdot \cos(\omega t + \varphi_0)=A\cdot \sin(\omega t + \frac{\pi}{2}+ \varphi_0)$
+\begin{eqnarray*}
+	\sin (-x) = -\sin (x)  \quad & \quad \cos (-x) = \cos (x) \\
+	\sin^2 x + \cos^2 x = 1  \quad & \quad \tan x = \frac{\sin x}{\cos x}
+\end{eqnarray*}
+$e^{ix}=cos(x)+i\,sin(x)$, $e^{-ix}=sin(x)-i\,cos(x)$
+
+\paragraph{Additionstheoreme} % (fold)
+\label{par:additionstheoreme}
+ \begin{eqnarray*}
+ 	\cos (x + y) = \cos x \cos y - \sin x \sin y \\
+	\cos \enbrace{x - \frac{\pi}{2}} = \sin x \qquad \quad \sin \enbrace{x + \frac{\pi}{2}} = \cos x \\
+    \sin \enbrace{x + y} = \sin x \cos y + \cos x \sin y \\
+	\sin 2x = 2 \sin x \cos x        \\
+	\cos 2x = \cos^2 x - \sin^2 x = 2\cos^2 x - 1\\
+ \end{eqnarray*}
+% paragraph additionstheoreme (end)
+
+$\begin{array}{c|c|c|c|c|c|c|c|c}
+x & 0 & \pi / 6 & \pi / 4 & \pi / 3 & \pi / 2 & \pi & \frac{3}{2}\pi & 2 \pi \\ \hline
+\sin & 0 & \frac{1}{2} & \frac{1}{\sqrt{2}} & \frac{\sqrt 3}{2} & 1 & 0 & -1 & 0 \\
+\cos & 1 & \frac{\sqrt 3}{2} & \frac{1}{\sqrt 2} & \frac{1}{2} & 0 & -1 & 0 & 1 \\     
+\tan & 0 & \frac{\sqrt{3}}{3}&	1				 &	\sqrt{3} & \lightning & 0 & \lightning & 0\\
+\end{array}$
+
+
+\subsection{Matrizen}
+% ----------------------------------------------------------------------
+Eine Matrix ist eine Tabelle aus mathematischen Objekten.
+Die Matrix $A=(a_{ij}) \in \mathbb K^{m\times n}$ hat $m$ Zeilen mit Index $i$ und $n$ Spalten mit Index $j$
+
+\subsubsection{Allgemeine Rechenregeln}
+\textbf{Merke:} Zeile vor Spalte! (Multiplikation, Indexreihenfolge, etc...)\\
+
+\begin{tabular}{ll}	
+	1)  $A+0=A$ & 2)  $1 \cdot A=A$ \\
+	3)  $A+B=B+A$ & 4) $A \cdot B \ne B \cdot A$ (im allg.) \\
+	5)  $(A+B)+C=A+(B+C)$ & 6) $\lambda (A+B) = \lambda A + \lambda B$\\ 
+\end{tabular}
+Multiplikation von $A\in \mathbb K^{m\times r}$ und $B\in \mathbb K^{r\times n}$: $AB\in\mathbb K^{m\times n}$
+
+\subsubsection{Transponieren}
+Falls $A=(a_{ij})\ \in \mathbb K^{m\times n}$ gilt: $A^\top=(a_{ji})\ \in \mathbb K^{n\times m}$\\
+Regeln:\\
+$(A+B)^\top=A^\top+B^\top$\qquad $(A\cdot B)^\top=B^\top\cdot A^\top$\qquad \\ $(\lambda A)^\top=\lambda A^\top$ \qquad $(A^\top)^\top=A$\\
+\\
+$A\in \mathbb K^{n\times n}$ ist symmetrisch, falls $A=A^\top$\qquad ($\Rightarrow$ diagbar)\\
+$A\in \mathbb K^{n\times n}$ ist schiefsymmetrisch, falls $A=-A^\top$\\
+$A\in \mathbb K^{n\times n}$ ist orthogonal(Spaltenvektoren=OGB), falls:\\
+\qquad\ $AA^\top=E_n$\qquad $A^\top=A^{-1}$\qquad $\det A=\pm 1$\\
+$A\in \mathbb C^{n\times n}$ ist hermitesch, falls $A=\overline{A}^\top$  \quad (kmplx. konj. u. transp.)
+
+
+\subsubsection{Inverse Matrix $A^{-1}\in \mathbb K^{n\times n}$}
+für die inverse Matrix $A^{-1}$ von $A\in \mathbb K^{n\times n}$ gilt: $A^{-1}A=E_n$\\
+$(A^{-1})^{-1}=A$ \qquad $(AB)^{-1}=B^{-1}A^{-1}$ \qquad $(A^\top)^{-1}=(A^{-1})^\top$\\
+\\
+$A\ \in \mathbb R^{n\times n}$ ist invertierbar, falls: $\det (A) \ne 0 \quad \lor \quad rg(A)=n$\\
+\\
+Berechnen von $A^{-1}$ nach Gauß:\\
+$AA^{-1}=E_n\quad\Rightarrow\quad (A|E_n)\overset{EZF}{\longrightarrow}(E_n|A^{-1})$\\
+
+\subsubsection{Elementare Zeilen/Spaltenumformungen(EZF/ESF)}
+$A \in \mathbb K^{m\times n}$ hat $m$ Zeilen $z_i\in \mathbb K^n$ und $n$ Spalten $s_j\in \mathbb K^m$
+\begin{itemize}\itemsep0pt
+\item \textbf{Addition} ($\lambda\ne 0$):\quad $\lambda_1 z_1 + \lambda_2  z_2$ \quad / \quad $\lambda_1  s_1 + \lambda_2 s_2$
+\item Vertauschen von Zeilen/Spalten
+\item Multiplikation mit $\lambda\ne 0$: \quad $\lambda \cdot z$ \quad  / \quad  $\lambda \cdot s$
+\end{itemize}
+
+\subsubsection{Rang einer Matrix $A$}
+$A\in \mathbb K^{m\times n}$ mit $r$ lin. unabhängige Zeilen und $l$ "Nullzeilen":\\
+Rang von $A$: $\mathrm{rg}(A)=m-l=r$\\  
+Vorgehensweise: \\
+\textbf{Zeilenrang (A):} Bringe $A$ auf ZSF $\Ra$ Zeilenrang$(A) = rg(A)$\\     
+\textbf{Zeilenraum (A):}  $Z_A = \text{ Zeilen ungleich } 0$            \\
+\textbf{Spaltenrang:} Bringe Matrix auf Spaltenstufenform        \\
+\textbf{Kern:  }   $\ker(A) = \dme{x \in \mathbb R^n}{Ax= 0}$ \qquad $\mathrm{dim}(\ker(A))=n-r$ \\
+\textbf{Bild: } $A^T \Ra EZF \Ra $ Zeilen $(\not= 0)$ bilden die Basis vom Bild. Die (lin. unabhängigen) Spalten von $A$ bilden eine Basis vom Bild.
+\subsubsection{Lineares Gleichungssystem LGS}
+Das LGS $Ax=b$ kurz $(A|b)$ mit $A\in \mathbb K^{m\times n}$, $x\in \mathbb K^n$, $b\in \mathbb K^m$ hat $m$ Gleichungen und $n$ Unbekannte.\\
+\\
+\textbf{Lösbarkeitskriterium:}\\
+Ein LGS $(A|b)$ ist genau dann lösbar, wenn: $\mathrm{rg}(A)=\mathrm{rg}(A|b))$\\
+Die Lösung des LGS $(A|b)$ hat $\dim{\ker A} = n-\mathrm{rg}(A)$ frei wählbare Parameter.\\
+\\
+Das homogene LGS: $(A|0)$ hat stets die triviale Lösung $0$\\
+Das LGS hat eine Lsg. wenn $\det A \not= 0$ \quad $\rightarrow \exists A^{-1}$ \\
+Summen und Vielfache der Lösungen von $(A|0)$ sind wieder Lösungen.
+
+\subsubsection{Determinante von $A\in \mathbb K^{n\times n}$: $\det(A)=|A|$}
+
+\begin{itemize}\itemsep0pt
+\item $\det\begin{pmatrix}A&0\\C&D\end{pmatrix}=\det\begin{pmatrix}A&B\\0&D\end{pmatrix}=\det(A)\cdot\det(D)$
+\item $\begin{vmatrix}\lambda_1&&* \\ &\ddots& \\ 0&&\lambda_n \end{vmatrix} = \lambda_1\cdot \ldots\cdot \lambda_n = \begin{vmatrix} \lambda_1&&0  \\  &\ddots& \\  *&&\lambda_n \end{vmatrix}$
+\item $A=B \cdot C \quad \Rightarrow \quad |A|=|B| \cdot |C|$
+\item $\det(A)=\det(A^\top)$
+\item Hat $A$ zwei gleiche Zeilen/Spalten $\Rightarrow |A|=0$
+\item $|A|=\sum\limits_{i=1}^n (-1)^{i+j} \cdot a_{ij} \cdot |A_{ij}|$ \qquad Entwcklng. n. $i$ter Zeile.
+\item $\det(\lambda A)=\lambda^n \det(A)$
+\item Ist $A$ invertierbar, so gilt: $\det(A^{-1})=(\det(A))^{-1}$
+\item Vertauschen von Zeilen/Spalten ändert Vorzeichen von $|A|$
+\item $\det(AB) = \det(A) \det(B) = \det(B) \det(A) = \det(BA)$
+\end{itemize}
+Vereinfachung für Spezialfall $A\in \mathbb K^{2\times 2}$:\\
+$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in \mathrm{K}^{2\times 2}\Rightarrow \det(A)=|A|=ad-bc$
+
+
+
+
+
+
+\subsection{Vektorräume}
+% --------------------------------------------------------------
+Eine nichtleere Menge V mit zwei Verknüpfungen $+$ und $\cdot$ heißt $K$-Vektorraum über dem Körper $\mathbb K$.\\
+\textbf{Linear Unabhängig:}
+Vektoren heißen linear unabhängig, wenn aus: \\
+$\lambda_1 \vec v_1 + \lambda_2 \vec v_2 + \ldots + \lambda_n \vec v_n = \vec 0$ folgt, dass $\lambda_1 = \lambda_2 = \lambda_n = 0$
+\subsubsection{Skalarprodukt $\langle v,w \rangle$} 
+	\begin{description}
+	\item[Bilinear:] $\langle \lambda v+v',w \rangle=\lambda\cdot\langle v,w \rangle + \langle v',w \rangle$
+	\item[Symmetrisch:] $\langle v,w \rangle=\langle w,v \rangle$
+	\item[Positiv definit:] $\langle v,v \rangle\ge0$ 
+	\end{description}  
+Skalarprodukt bezüglich \textbf{symmetrischer, quadratischer} und \textbf{positiv definite} Matrix $A\in \mathbb R^{n\times n}$\\
+$\langle v,w \rangle_A=v^T A w$\\
+Matrix A positiv definit falls $\det (a_{11}) > 0 \land \det \left(\begin{matrix} a_11 & a_12\\ a_21 & a_22\end{matrix}\right) > 0 \land \dotsc \land \det (A)>0$   \\
+\textbf{Orthogonale Projektion} $p\in U^n$ von $q\in V^m$ auf $\sum u_i$:
+\begin{eqnarray*}
+   p=\sum_{i=1}^n \sprod{q}{\frac{u_i}{\abs{u_i}}}\frac{u_i}{\abs{u_i}} \quad = q - p^\perp
+\end{eqnarray*} 
+\textbf{Winkel} \quad 	$\sprod{\vec a}{\vec b} = a \cdot b \cdot \cos \phi$ \qquad
+$\phi = \arccos \enbrace{ \frac{\sprod{x}{y} }{\norm{x} \norm{y} } }$\\
+\textbf{Polynome} $<p(x),q(x)>=\int\limits_{0}^{1}p(x)q(x)\,dx$
+
+\subsubsection{Betrag von Vektoren}
+$
+||\vec a||=\sqrt{<\vec a,\vec a>} =\sqrt{a_1^2+a_2^2+\ldots +a_n^2}
+$
+
+
+\subsubsection{Orthogonalität}
+\textbf{Orthonormalisierungsvefahren von $n$ Vektoren nach Gram-Schmidt:}\\
+1. $b_1=\frac{v_1}{\|v_1\|}$ \qquad (Vektor mit vielen 0en oder 1en)\\
+2. $b_{k+1}= \frac{b_{k+1}^{'}}{\|b_{k+1}^{'}\|}$\ \ mit \ \ $b_{k+1}^{'}=v_{k+1}-\sum_{i=1}^k \langle v_{k+1},b_i \rangle \cdot b_i$\\
+\\
+\textbf{Ausgleichsrechnung:}\\
+Experiment: $(t_1,y_1), \hdots, (t_n,y_n)$\\
+$f_1: \mathbb R \rightarrow \mathbb R, f_1(x) =1$ \qquad $f_2: \mathbb R \rightarrow \mathbb R, f_2(x) = x$
+\begin{eqnarray*}
+\Rightarrow A = \begin{pmatrix}f_1(t_1) & f_2(t_1)\\\vdots & \vdots\\f_1(t_n) & f_2(t_n)\end{pmatrix} \qquad v = \begin{pmatrix}y_1\\\vdots\\y_n\end{pmatrix}
+\end{eqnarray*}
+$A^{\top}Ax=A^{\top}v \rightarrow $ LGS lösen nach x\\
+$f: \mathbb R \rightarrow \mathbb R, f(x) = x_1 f_1(x) + \hdots + x_n f_n(x)$
+\\
+\textbf{Orthogonale Projektion in UVR:} \quad \\
+1. Normiere Basis von $U$. \\
+2. $u = \sprod{b_1}{v}b_1 + \sprod{b_2}{v}b_2 \ldots \Ra u^\perp = v - u$ \\
+Abstand von $v$ zu $U$: $\norm{u^{\perp}}$
+
+\subsubsection{Vektorprodukt}
+$\vec a\times\vec b=\left( \begin{matrix} a_2b_3-a_3b_2\\a_3b_1-a_1b_3\\a_1b_2-a_2b_1\end{matrix}\right)$\qquad $\vec a,\vec b\ \in \mathbb R^3$\\
+\\
+$\vec a\times\vec b \perp \vec a,\vec b$ \qquad ($\vec a\times\vec b=0\ \Leftrightarrow\ \vec a;\vec b$\ linear abhängig.\\
+$||\vec a\times\vec b||=||\vec a||\cdot||\vec b||\cdot \sin\left(\measuredangle (\vec a;\vec b)\right)\mathrel{\widehat{=}}$\ Fläche des Parallelogramms\\
+Graßmann-Identität: $\vec a\times(\vec b \times \vec c)\equiv\vec b\cdot(\vec a \cdot \vec c)-\vec c\cdot(\vec a \cdot \vec b)$\\
+\\
+Spatprodukt:\\
+$[a,b,c]:=\langle \vec a\times\vec b,\vec c\rangle=\det (a,b,c)\mathrel{\widehat{=}}$\ Volumen des Spates.\\
+$[a,b,c]>0\ \Rightarrow\ a,b,c$\ bilden Rechtssystem \\ $[a,b,c]=0\ \Rightarrow\ a,b,c$\ linear abhängig\\ \\
+Orthogonale Zerlegung eine Vektors v längs a:\\
+$v = v_a + v_{a^\perp} \text{ mit } v_a = \frac{\sprod{v}{a} }{\sprod{a}{a} }*a \text{ und }	 v_{a^\perp} = v - v_a	$
+\subsubsection{Basis (Jeder VR besitzt eine Basis!)} % (fold)
+\label{sub:basis}
+ Eine Teilmenge $B$ heißt Basis, von $V$ wenn gilt:
+\begin{itemize}\itemsep0pt
+	\item $\left\langle B \right\rangle =V$  $B$ erzeugt $V$
+	\item $B$ ist linear unabhängig
+\end{itemize}                   
+
+
+% subsection basis (end)
+\subsubsection{Dimension} % (fold)
+\label{sub:dimension}
+  \begin{eqnarray*}
+  	   n:= \abs{B} \in \mathbb N_0 \text{ Dimension von }V \quad & \quad \dim (V) = n
+  \end{eqnarray*}   
+Mehr als $n$ Vektoren sind stehts linear abhängig. \\
+Für jeden UVR $U \subset V$ gilt: $\dim (U) < \dim (V)$ 
+% subsection dimension (end)
+
+
+
+
+
+
+\subsection{Untervektorräume}
+Eine Teilmenge $U$ eines $K-$Vektorraums $V$ heißt Untervektorraum (U-VR) von $V$, falls gilt:
+\begin{enumerate}\itemsep0pt
+\item $U\neq \varnothing$ \qquad ($0\in U$)
+\item $u+v\in U \quad \forall u,v\in U$
+\item $\lambda u \in U \qquad \forall u\in U,\forall \lambda \in K$
+\end{enumerate}
+Wegen (3.) enthält ein UVR $U$ stets den Nullvektor $0$. Daher zeigt man (1.) meist, indem man $0\in U$ nachweist.\\
+\\
+\textbf{Triviale UVR}: $U=\{0\}$ mit $B = \emptyset$ \qquad $U=V$ mit $B_U=B_V$
+
+
+
+\subsection{Folgen}
+% ----------------------------------------------------------------------
+Eine Folge ist eine Abbildung $a: \mathbb N_0 \rightarrow \mathbb R,\ n \rightarrow a(n) =: a_n$\\
+explizite Folge: $(a_n)$ mit $a_n=a(n)$\\ rekursive Folge: $(a_n)$ mit $a_0=f_0,\  a_{n+1}=a(a_n)$\\
+
+\subsubsection{Monotonie}
+Im Wesentlichen gibt es 3 Methoden zum Nachweis der Monotonie:
+\begin{enumerate}\itemsep0pt
+\item $a_{n+1} - a_n \gtrless (=) 0$
+\item $\frac{a_n}{a_{n+1}} \gtrless (=) 1$ \qquad $\lor$ \qquad $\frac{a_{n+1}}{a_n} \lessgtr (=) 1$
+\item Vollständige Induktion
+\end{enumerate}
+
+\subsubsection{Konvergenz}
+$(a_n)$ ist \emph{Konvergent} mit \emph{Grenzwert} $a$, falls: $\forall \epsilon > 0\, \exists N  \in \mathbb N_0:  \abs{a_n -a} < \epsilon  \forall n \ge N$\\
+Eine Folge konvergiert gegen eine Zahl $a$:\ $(a_n) \overset{n \rightarrow \infty}{\longrightarrow} a$\\
+\paragraph{Es gilt:}
+\begin{itemize}\itemsep0pt
+\item Der Grenzwert a einer Folge $(a_n)$ ist eindeutig.
+\item Ist $(a_n)$ Konvergent, so ist $(a_n)$ beschränkt
+\item Ist $(a_n)$ unbeschränkt, so ist $(a_n)$ divergent.
+\item \emph{Das Monotoniekriterium}: Ist $(a_n)$ beschränkt und monoton, so konvergiert $(a_n)$
+\item \emph{Das Cauchy-Kriterium:} Eine Folge $(a_n)$ konvergiert gerade dann, wenn: \\ $\forall \epsilon >0 \, \exists \,  N \in \mathbb N_0: \abs{a_n - n_m} < \epsilon \, \forall n, m \ge N$
+\end{itemize}
+Regeln für konvergente Folgen $(a_n) \overset{n \rightarrow \infty}{\longrightarrow} a$ und $(b_n) \overset{n \rightarrow \infty}{\longrightarrow} b$:\\
+$\begin{array}{lll}
+(a_n+b_n) \overset{n \rightarrow \infty}{\longrightarrow} a+b & (a_n b_n) \overset{n \rightarrow \infty}{\longrightarrow} ab & (\frac{a_n}{b_n}) \overset{n \rightarrow \infty}{\longrightarrow} \frac{a}{b}\\
+(\lambda a_n) \overset{n \rightarrow \infty}{\longrightarrow} \lambda a & (\sqrt{a_n}) \overset{n \rightarrow \infty}{\longrightarrow} \sqrt{a} & (|a_n|) \overset{n \rightarrow \infty}{\longrightarrow} |a|
+\end{array}$
+
+\subsubsection{Wichtige Regeln}
+$a_n=q^n \quad \overset{n \rightarrow \infty}{\longrightarrow} \quad \begin{cases} 0 & |q|<1 \\ 1 & q=1 \\ \pm \infty & q < -1  \\  + \infty & q > 1\end{cases}$ \\
+$a_n=\frac{1}{n^k}\rightarrow 0$ \qquad $\forall k \ge 1$\\ 
+$a_n=\left(1+\frac{c}{n}\right)^n \rightarrow e^c$ \qquad \qquad \qquad $2^n \ge n^2$ \quad $\forall n\ge 4$
+
+
+
+
+
+\subsection{Reihen}
+% ----------------------------------------------------------------------
+\begin{eqnarray*}
+	\underset{\text{Harmonische Reihe}}{\sum_{n=1}^\infty \frac{1}{n} = \infty} \qquad \qquad  \qquad \qquad \underset{\text{Geometrische Reihe}}{\sum_{n=0}^\infty q^n = \frac{1}{1-q}} \qquad |q|<1
+\end{eqnarray*}
+
+\subsubsection{Konvergenzkriterien}
+$\sum^{\infty}_{n = 0} a_n$ divergiert, falls $a_n \not \rightarrow 0$ oder\\
+Minorante:$\exists \sum^{\infty}_{n = 0} b_n (div) \quad \land \quad a_n \ge b_n \ \forall n\ge n_0$\\[0.6em] 
+$\sum^{\infty}_{n = 0}(-1)^n a_n$ konvergiert falls $(a_n)$ monoton fallende Nullfolge\\
+oder Majorante: $\exists \sum^{\infty}_{n = 0} b_n = b \quad \land \quad a_n \le b_n \ \forall n\ge n_0$\\
+\\
+Absolute Konvergenz($\sum^\infty_{n=0} |a_n|=a$ konvergiert), falls:\\
+1. Majorante: $\exists \sum^{\infty}_{n = 0} b_n = b \quad \land \quad |a_n| \le b_n \quad \forall n\ge n_0$\\
+2. Quotienten und Wurzelkriterium:
+\begin{eqnarray*}
+	\rho := \lim_{n \rightarrow \infty} \abs{\frac{a_{n+1}}{a_n}} \qquad \lor \qquad \rho := \lim_{n \rightarrow \infty} \sqrt[n]{\abs{a_n}}\\
+	\text{Falls} 
+	\begin{cases}
+		\rho < 1 \Ra  ~\sum^\infty_{n=0} a_n \text{ konvergiert absolut} \\
+		\rho > 1 \Ra  ~\sum^\infty_{n=0} a_n \text{ divergiert} \\
+		\rho = 1 \Ra ~ \sum^\infty_{n=0} a_n \text{ keine Aussage möglich}
+	\end{cases}
+\end{eqnarray*}
+
+
+
+
+\subsection{Potenzreihen} % (fold)
+% ----------------------------------------------------------------------
+\begin{equation*}
+f(x)=\sum_{n=0}^\infty a_n \cdot (x-a)^n
+\end{equation*}
+Konvergenz:\\
+$\abs{\frac{a_{n+1} (x-a)^{n+1}}{a_n (x-a)^n}} = \abs{\frac{a_{n+1}}{a_n}}\abs{x-a} \overset{n \rightarrow \infty}{\rightarrow} q \cdot \abs{x -a}$\\
+Falls $\begin{cases}  \abs{x-a} < \frac{1}{q} & \text{ konvergiert absolut}\\
+	\abs{x-a} > \frac{1}{q} & \text{ divergiert} \\
+	\abs{x-a} = \frac{1}{q}  & \text{ keine Aussage möglich}
+	\end{cases}$\\
+Konvergenzradius: $R=\frac{1}{q}$\\
+$R = \underset{n\rightarrow \infty}{\lim} \abs{\frac{a_n}{a_{n+1}}}=\lim\limits_{n\rightarrow \infty}\frac{1}{\sqrt[n]{\abs{a_n}}}$
+
+\label{sub:potenzreihen}
+ \begin{eqnarray*}
+ 	e^z = \sum_{n = 0}^{\infty} \frac{z^n}{n!}\\
+	\sin (z) = \sum_{n = 0}^{\infty} (-1)^n \frac{z^{2n +1}}{(2n +1)!} = \frac{e^{iz} - e^{-iz}}{2i} \\
+	\cos (z) = \sum_{n = 0}^{\infty} (-1)^n \frac{z^{2n}}{(2n)!} = \frac{e^{iz} + e^{-iz}}{2}\\
+ \end{eqnarray*}
+% subsection potenzreihen (end)
+
+
+
+
+
+\subsection{Ableitung und Integral}
+$f$ diffbar, falls $f$ stetig und $\underset{h\rightarrow 0}{\lim}\frac{f(x_0+h)-f(x_0)}{h}=f'(x)$ exist.
+\subsubsection{Ableitungsregeln:}
+Linearität: $(\lambda f + \mu g)' (x) = \lambda f'(x) + \mu g'(x)$ \quad $\forall \lambda, \mu \in \mathbb R$ \\
+Produktregel: $(f \cdot g)'(x) = f'(x) g(x) + f(x) g'(x)$\\
+Quotientenregel$\enbrace{\frac{\text{NAZ}-\text{ZAN}}{\text{N}^2}}$: $\enbrace{\frac{f}{g}}' (x) = \frac{g(x)f'(x) -f(x) g'(x)}{g(x)^2}$\\
+Kettenregel: $\left( f(g(x)) \right)' = f'(g(x)) g'(x)$\\
+Potenzreihe: $f: ] \underbrace{-R+a, a+R}_{\subseteq D}	 [ \rightarrow \mathbb R, f(x) = \sum_{n=0}^{\infty} a_n (x -a)^n$ \quad $\Rightarrow$ \quad $f'(x) = \sum_{n=0}^{\infty} n a_{n} (x-a)^{n-1}$\\
+\textbf{Tangentengleichung:} $y=f(x_0)+f'(x_0)(x-x_0)$
+
+\subsubsection{Newton-Verfahren:}
+$x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}$ mit Startwert $x_0$
+
+\subsubsection{Integrationsmethoden:}
+\begin{itemize}\itemsep0pt
+\item Anstarren + Göttliche Eingebung
+\item Partielle Integration: $\int uv'=uv-\int u'v$
+\item Substitution: $\int f(\underbrace {g(x)}_{t}) \underbrace {g'(x)\,\mathrm dx}_{\mathrm dt}=\int f(t)\, \mathrm dt$
+\item Brechstange: $t=\tan(\frac{x}{2})$ \quad $\mathrm dx = \frac{2}{1+t^2} \mathrm dt$ \\ $\sin(x) \rightarrow \frac{2t}{1+t^2}$ \qquad $\cos(x) \rightarrow \frac{1-t^2}{1+t^2}$
+\end{itemize}
+
+\subsubsection{Integrationsregeln:}
+$\int_a^b f(x) \mathrm dx = F(b) - F(a)$\\
+$\int\lambda f(x)+\mu g(x) \, \mathrm dx=\lambda\int f(x) \, \mathrm dx + \mu\int g(x) \, \mathrm dx$
+
+\everymath{\displaystyle}	% Formeln ab hier groß Schreiben
+\begin{math}\renewcommand{\arraystretch}{1.8}
+\begin{array}{c|c|c}
+F(x) & f(x) & f'(x) \\ \hline 
+\frac{f'(x)}{f(x)}&ln|f(x)|&\frac{1}{f(x)}\cdot f'(x)\\
+\frac{1}{q+1}x^{q+1} & x^q & qx^{q-1} \\
+\frac{2\sqrt{x^3}}{3} & \sqrt{x} & \frac{1}{2\sqrt{x}}\\
+x\ln(x) -x & \ln(x) & \textstyle \frac{1}{x}\\
+e^x & e^x & e^x \\
+\frac{a^x}{\ln(a)} & a^x & a^x \ln(a) \\
+-\cos(x) & \sin(x) & \cos(x)\\
+\sin(x) & \cos(x) & -\sin(x)\\
+-\ln |\cos(x)| & \tan(x) & \frac{1}{\cos^2(x)} \\
+\ln |\sin(x)| & \cot(x) & \frac{-1}{\sin^2(x)} \\
+x\arcsin (x)+\sqrt{1-x^2} & \arcsin(x) & \frac{1}{\sqrt{1-x^2}}\\
+x\arccos (x)-\sqrt{1-x^2} & \arccos(x) & -\frac{1}{\sqrt{1-x^2}}\\
+x\arctan (x)-\frac{1}{2} \ln \left| 1+ x^2 \right| & \arctan (x) & \frac{1}{1+x^2} \\
+\end{array}
+\end{math}
+\everymath{\textstyle}
+
+
+\subsubsection{Rotationskörper}
+Volumen: $V = \pi \int_a^b f(x)^2 \mathrm dx$\\
+Oberfläche: $O = 2 \pi \int_a^b f(x) \sqrt{1 + f'(x)^2} \mathrm dx$
+
+\subsubsection{unbestimmtes Integral}
+$\int\limits_{\text{ok}}^{\text{böse}} f(x) \mathrm dx = \lim\limits_{b\rightarrow \text{böse}}\ \int\limits_{\text{ok}}^b f(x) \mathrm dx$\\
+\\
+Majoranten-Kriterium: $|f(x)|\le g(x)$\\
+$\int\limits_{1}^{\infty} \frac{1}{x^\alpha} \mathrm dx \begin{cases} \frac{1}{\alpha -1}, \quad \alpha > 1 \\ \infty, \qquad \alpha \le 1 \end{cases}$ \qquad
+$\int\limits_{0}^{1} \frac{1}{x^\alpha} \mathrm dx \begin{cases} \frac{1}{\alpha -1}, \quad \alpha < 1 \\ \infty, \qquad \alpha \ge 1 \end{cases}$\\
+\textbf{Cauchy-Hauptwert:} $\int\limits_{-\infty}^{\infty} f(x) \mathrm dx = \lim\limits_{b\rightarrow\infty} \int\limits_{-b}^b f(x) \mathrm dx$
+
+\subsubsection{Laplace-Transformation von $f: [0,\infty[ \ra \mathbb R,\ s \mapsto f(s)$}
+$\mathcal L \; f(s) = F(s) = \int\limits_{0}^{\infty} e^{-st} f(t)\ \mathrm dt = \lim\limits_{b \ra \infty} \int\limits_{0}^{b} e^{-st} f(t)\ \mathrm dt$
+
+\subsubsection{Integration rationale Funktionen}
+Gegeben: $\int \frac{A(x)}{Q(x)} \mathrm dx \qquad A(x),Q(x)\in \mathbb R[x]$
+\begin{enumerate}\itemsep0pt
+\item Falls, $\deg A(x) \ge \deg Q(x) \Ra$ Polynomdivision: \\ $\frac{A(x)}{Q(x)} = P(x) + \frac{B(x)}{Q(x)}$ mit $\deg B(x) < \deg Q(x)$
+\item Zerlege $Q(x)$ in unzerlegbare Polynome
+\item Partialbruchzerlegung $\frac{B(x)}{Q(x)} = \frac{\ldots}{(x - a_n)} + \ldots + \frac{\ldots}{\ldots}$
+\item Integriere die Summanden mit folgenden Funktionen
+\end{enumerate}
+
+$\text{mit} ~ \lambda=x^2+px+q, ~~ \beta=4q-p^2 ~~ \text{und} ~p^2<4q$!
+$\int\frac{1}{(x-a)^m}\mathrm dx \begin{cases} \ln\left|x-a\right|, & m=1\\ \frac{-1}{(m-1)(x-a)^{m-1}} &m\geq2 \end{cases}$\\
+$\int\frac{1}{(\lambda)^m} \mathrm dx \begin{cases} \frac{2}{\sqrt{\beta}} \arctan\frac{2x+p}{\sqrt{\beta}}, &m=1\\ \frac{2x+p}{(m-1)(\beta)(\lambda)^{m-1}}+\frac{2(2m-3)}{(m-1)(\beta)} \int\frac{\mathrm dx}{(\lambda)^{m-1}}, &m\geq2 \end{cases}$\\
+$\int\frac{Bx+C}{(\lambda)^m} \mathrm dx \begin{cases} \frac{B}{2} \ln(\lambda) + (C-\frac{Bp}{2}) \int\frac{\mathrm dx}{\lambda}, &m=1\\ \frac{-B}{2(m-1)(\lambda)^{m-1}} + (C-\frac{Bp}{2}) \int\frac{\mathrm dx}{(\lambda)^{m-1}}, &m\geq2 \end{cases}$\\
+Auch wichtig: Schrödinger's Katze:\includegraphics[height=0.5cm]{./cat.jpg}	% {../../../../Latex4Uni/Latex4UniGIT/Mathe/Formelsammlung/cat.jpg}
+\end{multicols}
+% Ende der Spalten
+
+
+% Dokumentende
+% ======================================================================
+\end{document}
