@@ -20,19 +20,7 @@
       
 % Seitenlayout und Ränder:
 \usepackage{geometry}
-\geometry{a4paper,landscape, left=6mm,right=6mm, top=0mm, bottom=3mm,includeheadfoot} 
-
-%Kopf- und Fußzeile
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-
-   \fancyfoot[C]{von Emanuel Regnath (Emanuel.Regnath@tum.de) und Martin Zellner (Martin.Zellner@mytum.de) - SoSe EI 2011}
-   \renewcommand{\headrulewidth}{0.0pt} %obere Linie ausblenden
-   \renewcommand{\footrulewidth}{0.1pt} %obere Linie ausblenden
-
-   \fancyfoot[R]{Stand: \today \qquad \thepage}
-   \fancyfoot[L]{Evtl. Fehler bitte sofort melden!!!!einself!!}
+\geometry{a4paper, landscape, left=6mm,right=6mm, top=6mm, bottom=6mm} 
 	
 % Schriftart SANS für bessere Lesbarkeit bei kleiner Schrift
 \renewcommand{\familydefault}{\sfdefault} 
@@ -76,7 +64,7 @@ Dreiecksungleichung \qquad \qquad \qquad
 	\abs{x + y} \le \abs{x} + \abs{y} \\
 	\abs{\abs{x}- \abs{y}} \le \abs{x-y} 
 \end{array}\end{math} \\
-Cauchy-Schwarz-Ungleichung: \qquad 
+Cauchy-Schwarz-Ungleichung: \qquad
 \begin{math}\begin{array}{l}
 \left| \sprod{x}{y} \right| \le \| x\| \cdot \| y\|
 \end{array}\end{math} \\
@@ -107,11 +95,20 @@ Binomische Formel \qquad \qquad \qquad
 	(a+b)^n = \sum\limits_{k = 0}^{n} \binom{n}{k} a^{n-k} b^{k}
 \end{array}\end{math}   \\ 
 \\
-Wichtige Zahlen: $\sqrt{2} = 1,41421$\quad $\pi=$ ist genau 3 \quad $e = 2,71828$ \quad $\pi =  3,14159$ \quad $div B = 42!$
+Logarithmus \qquad \qquad \qquad \qquad \quad
+\begin{math}\begin{array}{l}
+	\ln{x^k}=k*\ln{x}
+\end{array}\end{math}   \\ 
+Exponentialfunktion \qquad \qquad \qquad
+\begin{math}\begin{array}{l}
+	\exp(x) = \sum\limits_{n = 0}^\infty \frac{x^n}{n!}
+\end{array}\end{math}   \\ 
+\\
+Wichtige Zahlen: $\sqrt{2} = 1,41421$\quad $e = 2,71828$ \quad $\pi =  3,14159$
 
 \paragraph{Fakultäten} % (fold)
 \label{par:fakultaeten}
-$n! = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot n$ \qquad  $0! = 1! = 1$ \\
+$n! = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot n$ \qquad  $0! = 1! = 1$ 
 		
 
 % paragraph fakultäten (end)
@@ -150,7 +147,7 @@ IS: $n \rightarrow n+1$: \quad Zeige $f(n+1)=\underset{=wahr}{f(n)}  \dotsc=g(n+
 \subsection{Komplexe Zahlen}
 % ----------------------------------------------------------------------
 Eine komplexe Zahl $z=a+b\mathbf{i},\ z\in \mathbb C a,b \in \mathbb R$ besteht aus einem Realteil $\Re(z)=a$ und einem Imaginärteil $\Im(z)=b$, wobei $\mathbf{i}=\sqrt{-1}$ die immaginären Einheit ist.
-Es gilt: \quad $i^2 = -1$ \quad $i^4 = 1$
+Es gilt: \quad $i^2 = -1$ \quad $i^4 = 1$ \\
 \subsubsection{Kartesische Koordinaten}
 Rechenregeln:\\
 $z_1+z_2=(a_1+a_2)+(b_1+b_2)\mathbf{i}$\\
@@ -161,7 +158,10 @@ $\overline{z}=a-b\mathbf{i}$\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qq
 $z\overline{z}=|z|^2=a^2+b^2$\\
 \\
 Inverses Element:\\
-$z^{-1}=\frac{\overline z}{\overline z z}=\frac{\overline z}{a^2+b^2}=\frac{a}{a^2+b^2} - \frac{b}{a^2+b^2}\mathbf{i}$
+$z^{-1}=\frac{\overline z}{\overline z z}=\frac{\overline z}{a^2+b^2}=\frac{a}{a^2+b^2} - \frac{b}{a^2+b^2}\mathbf{i}$ \\
+\\
+neutrales Element, zum Gleichungen lösen u.ä.: \\ 
+$\frac{\overline{z}}{\overline{z}}=1$
 
 
 \subsubsection{Polarkoordinaten}
@@ -344,6 +344,7 @@ $\lambda_1 \vec v_1 + \lambda_2 \vec v_2 + \ldots + \lambda_n \vec v_n = \vec 0$
 	\item[Bilinear:] $\langle \lambda v+v',w \rangle=\lambda\cdot\langle v,w \rangle + \langle v',w \rangle$
 	\item[Symmetrisch:] $\langle v,w \rangle=\langle w,v \rangle$
 	\item[Positiv definit:] $\langle v,v \rangle\ge0$ 
+	\item[Im kartesischen Koordinatensystem:] $\langle v,w \rangle=v_1 w_1+…+v_n w_n$
 	\end{description}  
 Skalarprodukt bezüglich \textbf{symmetrischer, quadratischer} und \textbf{positiv definite} Matrix $A\in \mathbb R^{n\times n}$\\
 $\langle v,w \rangle_A=v^T A w$\\
@@ -472,7 +473,7 @@ $a_n=\left(1+\frac{c}{n}\right)^n \rightarrow e^c$ \qquad \qquad \qquad $2^n \ge
 \subsection{Reihen}
 % ----------------------------------------------------------------------
 \begin{eqnarray*}
-	\underset{\text{Harmonische Reihe}}{\sum_{n=1}^\infty \frac{1}{n} = \infty} \qquad \qquad  \qquad \qquad \underset{\text{Geometrische Reihe}}{\sum_{n=0}^\infty q^n = \frac{1}{1-q}} \qquad |q|<1
+	\underset{\text{Harmonische Reihe}}{\sum_{n=1}^\infty \frac{1}{n} = \infty} \quad \underset{\text{Geometrische Reihe; $n=0$, notfalls Index verschieben}}{\sum_{n=0}^\infty q^n = \frac{1}{1-q}} |q|<1
 \end{eqnarray*}
 
 \subsubsection{Konvergenzkriterien}
@@ -500,15 +501,16 @@ Absolute Konvergenz($\sum^\infty_{n=0} |a_n|=a$ konvergiert), falls:\\
 \subsection{Potenzreihen} % (fold)
 % ----------------------------------------------------------------------
 \begin{equation*}
-f(x)=\sum_{n=0}^\infty a_n \cdot (x-a)^n
+f(x)=\sum_{n=0}^\infty a_n \cdot (x-a)^n = \sum_{n=0}^\infty a_n q^n
 \end{equation*}
 Konvergenz:\\
 $\abs{\frac{a_{n+1} (x-a)^{n+1}}{a_n (x-a)^n}} = \abs{\frac{a_{n+1}}{a_n}}\abs{x-a} \overset{n \rightarrow \infty}{\rightarrow} q \cdot \abs{x -a}$\\
 Falls $\begin{cases}  \abs{x-a} < \frac{1}{q} & \text{ konvergiert absolut}\\
 	\abs{x-a} > \frac{1}{q} & \text{ divergiert} \\
-	\abs{x-a} = \frac{1}{q}  & \text{ keine Aussage möglich}
+	\abs{x-a} = \frac{1}{q}  & \text{ keine Aussage möglich (Wert auf Radius)}
 	\end{cases}$\\
 Konvergenzradius: $R=\frac{1}{q}$\\
+Intervall (reell) s: $a_n$ nach x auflösen $I=(R-s, R+s)$  \\
 $R = \underset{n\rightarrow \infty}{\lim} \abs{\frac{a_n}{a_{n+1}}}=\lim\limits_{n\rightarrow \infty}\frac{1}{\sqrt[n]{\abs{a_n}}}$
 
 \label{sub:potenzreihen}
@@ -598,7 +600,13 @@ $\text{mit} ~ \lambda=x^2+px+q, ~~ \beta=4q-p^2 ~~ \text{und} ~p^2<4q$!
 $\int\frac{1}{(x-a)^m}\mathrm dx \begin{cases} \ln\left|x-a\right|, & m=1\\ \frac{-1}{(m-1)(x-a)^{m-1}} &m\geq2 \end{cases}$\\
 $\int\frac{1}{(\lambda)^m} \mathrm dx \begin{cases} \frac{2}{\sqrt{\beta}} \arctan\frac{2x+p}{\sqrt{\beta}}, &m=1\\ \frac{2x+p}{(m-1)(\beta)(\lambda)^{m-1}}+\frac{2(2m-3)}{(m-1)(\beta)} \int\frac{\mathrm dx}{(\lambda)^{m-1}}, &m\geq2 \end{cases}$\\
 $\int\frac{Bx+C}{(\lambda)^m} \mathrm dx \begin{cases} \frac{B}{2} \ln(\lambda) + (C-\frac{Bp}{2}) \int\frac{\mathrm dx}{\lambda}, &m=1\\ \frac{-B}{2(m-1)(\lambda)^{m-1}} + (C-\frac{Bp}{2}) \int\frac{\mathrm dx}{(\lambda)^{m-1}}, &m\geq2 \end{cases}$\\
-Auch wichtig: Schrödinger's Katze:\includegraphics[height=0.5cm]{./cat.jpg}	% {../../../../Latex4Uni/Latex4UniGIT/Mathe/Formelsammlung/cat.jpg}
+
+\subsection{Taylor-Polynom}
+\subsection{Kurve}
+Kurvenlänge:
+\subsection{Sachen die man in der Schule hätte lernen sollen}
+Polynomdivision: \\
+Quadratisches Ergänzen: \\
 \end{multicols}
 % Ende der Spalten
 
