@@ -1,0 +1,6 @@
+*.pdf_tex
+*.pdf
+.*.sw?
+*.log
+*.aux
+

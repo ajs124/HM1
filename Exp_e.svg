@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<svg version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="-500 -800 1200 1100"
+     width="600"
+     height="550"
+>
+<title>exp(x) with Tangent in (0,1)</title>
+
+<desc>
+	This is the file
+		http://commons.wikimedia.org/wiki/File:Exp_e.svg
+
+	It shows the graph of the exponential e^x together with its
+	tangent of slope 1, i.e. x+1.
+</desc>
+
+<defs>
+	<!-- pstricks-style arrow, zoom 3 -->
+	<marker id="Arrow" refX="6" refY="5" markerUnits="strokeWidth"
+			markerWidth="12" markerHeight="9" orient="auto">
+		<g transform="translate(6 5)">
+			<path d="M -1 0 L -6 4 L 6 0 L -6 -5 z"/>
+		</g>
+	</marker>
+
+	<path id="tick" d="M -0.1,0 H 0.1" />
+
+	<!-- Grid -->
+	<pattern id="grid" width="1" height="1" patternUnits="userSpaceOnUse">
+		<g style="stroke:#000; stroke-width:0.002; stroke-linecap:butt; fill:none;" >
+			<rect width="1" height="1" />
+		</g>
+	</pattern>
+
+	<!-- Pattern used to x-Ticks on Axes -->
+	<pattern id="tick-x" width="1" height="1" patternUnits="userSpaceOnUse">
+		<path style="stroke:black; stroke-width:0.02;" d="M 0,-1 v 2" />
+	</pattern>
+
+	<!-- Pattern used to y-Ticks on Axes -->
+	<pattern id="tick-y" width="1" height="1" patternUnits="userSpaceOnUse">
+		<path style="stroke:black; stroke-width:0.02;" d="M -1,0 h 2" />
+	</pattern>
+
+	<!-- Legend -->
+	<path id="leg" d="M 0 0 H -0.3" />
+
+	<!--
+		x(t) = t
+		y(t) = exp(t)
+		t    = -5 ... 2.5
+	-->
+	<path id="exp" d="
+		M -5,0.0067
+		C -4.6875,0.0088 -4.375,0.0118 -4.0625,0.0172
+		C -3.75,0.0226 -3.4375,0.0302 -3.125,0.0439
+		C -2.8125,0.0577 -2.5,0.0771 -2.1875,0.1122
+		C -1.875,0.1473 -1.5625,0.197 -1.25,0.2865
+		C -1.0937,0.3313 -0.9375,0.3863 -0.7812,0.4578
+		C -0.625,0.5294 -0.4687,0.6173 -0.3125,0.7316
+		C -0.1563,0.8459 0,0.9864 0.1563,1.1691
+		C 0.3125,1.3518 0.4688,1.5763 0.625,1.8682
+		C 0.7031,2.0142 0.7813,2.1772 0.8594,2.3617
+		C 0.9375,2.5462 1.0156,2.7522 1.0938,2.9854
+		C 1.1719,3.2187 1.25,3.4791 1.3281,3.774
+		C 1.4063,4.0688 1.4844,4.398 1.5625,4.7707
+		C 1.6406,5.1434 1.7188,5.5596 1.7969,6.0308
+		C 1.875,6.5019 1.9531,7.028 2.0313,7.6236
+		C 2.0703,7.9214 2.1094,8.2366 2.1484,8.5715
+    	" />
+
+	<style type="text/css">
+	.rm {font-size:30px; stroke-width:0px; font-style:normal; font-variant:normal; stroke:black; font-family: Times New Roman;}
+	.it {font-size:30px; stroke-width:0px; font-style:italic; font-variant:normal; stroke:black; font-family: Times New Roman;}
+	.it2{font-size:22px; stroke-width:0px; font-style:italic; font-variant:normal; stroke:black; font-family: Times New Roman;}
+
+	.tangent { stroke-width:0.04; stroke:#88f; stroke-dasharray:.1 .1; }
+	.dots    { stroke-width:0.02; stroke:black; stroke-dasharray:.04 .04; }
+	.exp     { stroke-width:0.05;  stroke:red; }
+	</style>
+
+</defs>
+
+<!-- ################################################################### -->
+
+<!-- Typesetting Text in SVG is plain Horror.
+	 Scaling does not work as expected and font metrics like
+	 anchor points get garbaged. So we zoom the complete image
+	 except the texts instead. -->
+
+<g transform="scale(100 -100)" fill="none">
+
+	<!-- Background -->
+	<rect x="-5" y="-3" width="100%" height="100%" style="fill:white" />
+
+	<!-- Grid -->
+	<path d="M -5.95, -3.95 H 6.9 V 7.95 H -5.95" fill="url(#grid)" style="stroke:none;" />
+
+	<!-- Ticks on x-Axis -->
+	<rect x="-4.5" y="-0.1" width="11" height="0.2" fill="url(#tick-x)" style="stroke:none;" />
+
+	<!-- Ticks on y-Axis -->
+	<rect x="-0.1" y="-2.5" width="0.2" height="10" fill="url(#tick-y)" style="stroke:none;" />
+
+	<!-- indicate e on y-Axis -->
+	<path d="M -0.1  2.71828 H 0.1" stroke-width="0.02" stroke="black" />
+	<path d="M 1,0 V 2.71828 H 0" class="dots" />
+</g>
+
+<!-- Labels for x-Axis -->
+<g transform="translate (2 40)" style="text-anchor:middle;" class="rm" >
+	<g transform="translate (-400 0)"><text>&#8722;4</text></g>
+	<g transform="translate (-300 0)"><text>&#8722;3</text></g>
+	<g transform="translate (-200 0)"><text>&#8722;2</text></g>
+	<g transform="translate (-100 0)"><text>&#8722;1</text></g>
+	<g transform="translate (100 0)"><text>1</text></g>
+	<g transform="translate (200 0)"><text>2</text></g>
+	<g transform="translate (300 0)"><text>3</text></g>
+	<g transform="translate (400 0)"><text>4</text></g>
+	<g transform="translate (500 0)"><text>5</text></g>
+	<g transform="translate (600 0)"><text>6</text></g>
+
+	<g transform="translate (640 -55)">
+		<g transform="scale(1.3)"><text class="it">x</text></g>
+	</g>
+	<!-- &#402; = &fnof; -->
+	<g transform="translate (20 -770)" text-anchor="start">
+		<g transform="scale(1.3)"><text><tspan class="rm">&#402;(</tspan><tspan class="it">x</tspan><tspan class="rm">)</tspan></text></g>
+	</g>
+</g>
+
+<!-- Labels for y-Axis, &#8722; = &minus; -->
+<g transform="translate (-13 10)" style="text-anchor:end;" class="rm">
+	<g transform="translate (0 -700)"><text>7</text></g>
+	<g transform="translate (0 -600)"><text>6</text></g>
+	<g transform="translate (0 -500)"><text>5</text></g>
+	<g transform="translate (0 -400)"><text>4</text></g>
+	<g transform="translate (0 -300)"><text>3</text></g>
+	<g transform="matrix (1.3 0 0 1.3 0 -271.8)"><text class="it">e</text></g>
+	<g transform="translate (0 -200)"><text>2</text></g>
+	<g transform="translate (0 -100)"><text>1</text></g>
+	<g transform="translate (0.3 100)"><text>&#8722;1</text></g>
+	<g transform="translate (0.3 200)"><text>&#8722;2</text></g>
+</g>
+
+<!-- Legend for Graphs -->
+<g style="fill:black;">
+
+	<!-- very labels -->
+	<text class="rm" transform="matrix (1.3 0 0 1.3 480 -540)"><tspan class="it">x</tspan> + 1</text>
+	<text class="it" transform="matrix (1.5 0 0 1.5 190 -540)">e<tspan dy="-.9ex" dx=".14ex" class="it2">x</tspan></text>
+</g>
+
+<g transform="scale(100 -100)" style="fill:none;" >
+
+	<!-- Axes -->
+	<g style="stroke:black; stroke-width:0.02" >
+	  <path d="M -5 0 H 6.85" marker-end="url(#Arrow)"/>
+	  <path d="M 0 -3 V 7.85" marker-end="url(#Arrow)"/>
+	</g>
+
+	<!-- exp(x) -->
+	<use xlink:href="#exp" class="exp" />
+
+	<!-- Tangent -->
+	<path d="M -5 -4 l 12 12" class="tangent" />
+
+</g>
+
+</svg>
