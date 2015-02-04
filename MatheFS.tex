@@ -197,19 +197,30 @@ Anmerkung: Addition in kartesische Koordinaten umrechnen(leichter)!
 
 \subsection{Funktionen}
 Eine Funktion $f$ ist eine Abbildung, die jedem Element $x$ einer Definitionsmenge $D$ genau ein Element $y$ einer Wertemenge $W$ zuordnet.\\
-$f:D\rightarrow W,\ x \mapsto f(x):=y$\\
+$f:D\mapsto W,\ x \mapsto f(x):=y$\\
 \\
 \textbf{Injektiv}: $f(x_1)=f(x_2) \Rightarrow x_1=x_2$\\
 \textbf{Surjektiv}: $\forall y\in W \exists x\in D:f(x)=y$\\ \quad (Alle Werte aus $W$ werden angenommen.)\\
 \textbf{Bijektiv}: $f$ ist injektiv und surjektiv $\Rightarrow$ $f$ umkehrbar.
 
 \subsubsection{Symmetrie einer Funktion $f$}
-\textbf{Achsensymmetrie}(gerade Funktion): $f(-x)=f(x)$\\
-\textbf{Punktsymmetrie}(ungerade Funktion): $f(-x)=-f(x)$\\
+\textbf{Achsensymmetrie}(gerade Funktion): $f(x)=f(-x)$\\
+\textbf{Punktsymmetrie}(ungerade Funktion): $f(x)=-f(-x)$\\
 \\
 Regeln für gerade Funktion $g$ und ungerade Funktion $u$:\\
 $g_1 \pm g_2 = g_3$ \qquad $u_1 \pm u_2 = u_3$\\
-$g_1 \cdot g_2=g_3$ \qquad $u_1 \cdot u_2 = g_3$ \qquad $u_1 \cdot g_1=u_3$
+$g_1 \cdot g_2=g_3$ \qquad $u_1 \cdot u_2 = g_3$ \qquad $u_1 \cdot g_1=u_3$ \\
+Ist $f: \R \mapsto \R$ gerade und diffbar so ist $f'$ ungerade (nach Kettenregel). Selbes gilt umgekehrt für ungerade Funktionen.
+
+\subsubsection{Konvex und konkav}
+$f: C\mapsto\R$ für alle $x,y \in C \wedge t \in [0,1]$\\
+Konvex: $f(tx+(1-t)y)\leq tf(x)+(1-t)f(y)$ \\
+Konkav: $f(tx+(1-t)y)\geq tf(x)+(1-t)f(y)$ \\
+streng/strikt für $x \neq y$ \\
+Lineare Funktionen: beides, aber nicht strikt \\
+falls Funktion 2 mal stetig diff'bar: \\
+konvex: $f''(x)\geq 0 \forall x \in (a,b)$ \\
+konkav: $f''(x)\leq 0 ~\forall x \in (a,b)$
 
 \subsubsection{Extrema, Monotonie und Krümmung von $f$}
 $f'(x_0)\overset{!}{=}0 \quad \begin{cases}f''(x_0)<0 \ \rightarrow \ \text{Maximum (lokal)} \\ f''(x_0)>0 \ \rightarrow \ \text{Minimum (lokal)}\end{cases} $\\
@@ -222,7 +233,7 @@ Vertikal: $\exists \text{ Nullstelle } a \text{ des Nenners }: \lim\limits_{x \r
 Polynomasymptote $P(x)$: $f(x):=\frac{A(x)}{Q(x)}=P(x)+ \underset{\ra 0}{\frac{B(x)}{Q(x)}}$
 
 
-\subsubsection{Wichtige Sätze für \underline{stetige} Fkt. $f: [a,b] \rightarrow \R, f \mapsto f(x)$ }
+\subsubsection{Wichtige Sätze für \underline{stetige} Fkt. $f: [a,b] \mapsto \R, f \mapsto f(x)$ }
 \textbf{Zwischenwertsatz:} $\forall y \in [f(a),f(b)]\ \exists x\in [a,b]:f(x)=y$\\
 \textbf{Mittelwertsatz:} Falls $f$ diffbar, dann $\exists \xi:f'(\xi)=\frac{f(b)-f(a)}{b-a}$\\
 \textbf{Satz von Rolle:} Falls $f(a)=f(b)$, dann $\exists x_0: f' (x_0) = 0$\\
@@ -243,16 +254,18 @@ $f(t)=A\cdot \cos(\omega t + \varphi_0)=A\cdot \sin(\omega t + \frac{\pi}{2}+ \v
 	\sin (-x) = -\sin (x)  \quad & \quad \cos (-x) = \cos (x) \\
 	\sin^2 x + \cos^2 x = 1  \quad & \quad \tan x = \frac{\sin x}{\cos x}
 \end{eqnarray*}
-$e^{ix}=cos(x)+i\,sin(x)$, $e^{-ix}=sin(x)-i\,cos(x)$
+$e^{ix}=\cos(x)+i\sin(x)\\
+e^{-ix}=\sin(x)-i\cos(x)$
 
 \paragraph{Additionstheoreme} % (fold)
 \label{par:additionstheoreme}
  \begin{eqnarray*}
- 	\cos (x + y) = \cos x \cos y - \sin x \sin y \\
+    \sin \enbrace{x \pm y} = \sin x \cos y \pm \cos x \sin y \\
+ 	\cos \enbrace{x \pm y} = \cos x \cos y \mp \sin x \sin y \\
 	\cos \enbrace{x - \frac{\pi}{2}} = \sin x \qquad \quad \sin \enbrace{x + \frac{\pi}{2}} = \cos x \\
-    \sin \enbrace{x + y} = \sin x \cos y + \cos x \sin y \\
 	\sin 2x = 2 \sin x \cos x        \\
 	\cos 2x = \cos^2 x - \sin^2 x = 2\cos^2 x - 1\\
+	\tan(x\pm y)=\frac{\sin(x\pm y)}{\cos(x\pm y)}
  \end{eqnarray*}
 % paragraph additionstheoreme (end)
 
@@ -268,7 +281,7 @@ x(t): nach t auflösen\\
 
 \subsection{Folgen}
 % ----------------------------------------------------------------------
-Eine Folge ist eine Abbildung $a: \N_0 \rightarrow \R,\ n \rightarrow a(n) =: a_n$\\
+Eine Folge ist eine Abbildung $a: \N_0 \mapsto \R,\ n \rightarrow a(n) =: a_n$\\
 explizite Folge: $(a_n)$ mit $a_n=a(n)$\\ rekursive Folge: $(a_n)$ mit $a_0=f_0,\  a_{n+1}=a(a_n)$\\
 
 \subsubsection{Monotonie}
@@ -310,9 +323,9 @@ $a_n=\left(1+\frac{c}{n}\right)^n \rightarrow e^c$ \qquad \qquad \qquad $2^n \ge
 Harmonische Reihe:
 \begin{itemize}\itemsep-2pt
 \item $\sum\limits_{n=1}^\infty \frac{1}{n} = \infty$ 
-\item allgemein: $\sum\limits_{n=1}^\infty \frac{-1^{n+1}}{n} = \ln 2$ \\
+\item allgemein: $\sum\limits_{n=1}^\infty \frac{-1^{n+1}}{n} = \ln 2$
+\item alternierend: $\sum\limits_{n=1}^\infty \frac{1}{n^\alpha}$ \\
 konvergiert für $\alpha > 1$ \quad divergiert für $\alpha \leq 1$
-\item alternierend: $\sum\limits_{n=1}^\infty \frac{1}{n^\alpha}$ 
 \end{itemize}
 Geometrische Reihe: $\sum\limits_{n=0}^{\infty}q^n = \frac{1}{1-q} \quad|q|<1$ \\
 \textbf{n = 0}, notfalls Index verschieben
@@ -320,13 +333,12 @@ Geometrische Reihe: $\sum\limits_{n=0}^{\infty}q^n = \frac{1}{1-q} \quad|q|<1$ \
 \subsubsection{Konvergenzkriterien}
 $\sum\limits^{\infty}_{n = 0} a_n$ divergiert, falls $a_n \not \rightarrow 0$ oder\\
 Minorante:$\exists \sum\limits^{\infty}_{n = 0} b_n (div) \quad \land \quad a_n \ge b_n \ \forall n\ge n_0$\\[0.6em] 
-$\sum\limits^{\infty}_{n = 0}(-1)^n a_n$ konvergiert falls $(a_n)$ monoton fallende Nullfolge\\
+Leibniz: $\sum\limits^{\infty}_{n = 0}(-1)^n a_n$ konvergiert falls $a_n$ monoton fallende Nullfolge\\
 oder Majorante: $\exists \sum\limits^{\infty}_{n = 0} b_n = b \quad \land \quad a_n \le b_n \ \forall n\ge n_0$\\
 \\
-Leibniz-Kriterium: \\
-Absolute Konvergenz($\sum\limits^\infty_{n=0} |a_n|=a$ konvergiert), falls:\\
-1. Majorante: $\exists \sum\limits^{\infty}_{n = 0} b_n = b \quad \land \quad |a_n| \le b_n \quad \forall n\ge n_0$\\
-2. Quotienten und Wurzelkriterium:
+Absolute Konvergenz ($\sum\limits^\infty_{n=0} |a_n|=a$ konvergiert), falls:\\
+Majorante: $\exists \sum\limits^{\infty}_{n = 0} b_n = b \quad \land \quad |a_n| \le b_n \quad \forall n\ge n_0$\\
+Quotienten und Wurzelkriterium:
 \begin{eqnarray*}
 	\rho := \lim_{n \rightarrow \infty} \abs{\frac{a_{n+1}}{a_n}} \qquad \lor \qquad \rho := \lim_{n \rightarrow \infty} \sqrt[n]{\abs{a_n}}\\
 	\text{Falls} 
@@ -336,8 +348,7 @@ Absolute Konvergenz($\sum\limits^\infty_{n=0} |a_n|=a$ konvergiert), falls:\\
 		\rho = 1 \Ra ~ \sum\limits^\infty_{n=0} a_n \text{ keine Aussage möglich}
 	\end{cases}
 \end{eqnarray*}
-
-
+\\
 
 
 \subsection{Potenzreihen} % (fold)
@@ -347,12 +358,12 @@ f(x)=\sum_{n=0}^\infty a_n \cdot (x-a)^n = \sum_{n=0}^\infty a_n q^n
 \end{equation*}
 Konvergenz:\\
 $\abs{\frac{a_{n+1} (x-a)^{n+1}}{a_n (x-a)^n}} = \abs{\frac{a_{n+1}}{a_n}}\abs{x-a} \overset{n \rightarrow \infty}{\rightarrow} q \cdot \abs{x -a}$\\
-Falls $\begin{cases}  \abs{x-a} < \frac{1}{q} & \text{ konvergiert absolut}\\
-	\abs{x-a} > \frac{1}{q} & \text{ divergiert} \\
-	\abs{x-a} = \frac{1}{q}  & \text{ keine Aussage möglich (Wert auf Radius)}
+Falls $\begin{cases}  \abs z = \abs{x-a} < \frac{1}{q} & \text{ konvergiert absolut}\\
+	\abs z = \abs{x-a} > \frac{1}{q} & \text{ divergiert} \\
+	\abs z = \abs{x-a} = \frac{1}{q}  & \text{ keine Aussage möglich (Wert auf Radius)}
 	\end{cases}$\\
 Konvergenzradius: $R=\frac{1}{q}$\\
-$R = \underset{n\rightarrow \infty}{\lim} \abs{\frac{a_n}{a_{n+1}}}=\lim\limits_{n\rightarrow \infty}\frac{1}{\sqrt[n]{\abs{a_n}}}$ \\
+$R = \lim\limits_{n \rightarrow \infty} \abs{\frac{a_n}{a_{n+1}}}=\frac{1}{\lim\limits_{n\rightarrow \infty}\sqrt[n]{\abs{a_n}}}$ \\
 Mittelpunkt s: $q$ nach x auflösen \\
 Intervall: $I=(s-R, s+R)$ 
 
@@ -363,9 +374,9 @@ Intervall: $I=(s-R, s+R)$
 	\cos (z) = \sum_{n = 0}^{\infty} (-1)^n \frac{z^{2n}}{(2n)!} = \frac{e^{iz} + e^{-iz}}{2}\\
  \end{eqnarray*}
 
-$\limsup=max(lim)$ \\
+$\limsup=\max(\lim)$ \\
 z.B. bei $a_n=(2+(-1)^n)^n \\
-\Rrightarrow$ Fallunterscheidung + R=$\limsup(\sqrt[n]{|a_n|})$
+\Rrightarrow$ Fallunterscheidung (gerade/ungerade) + R=$\frac{1}{\limsup(\sqrt[n]{|a_n|})}$
 % subsection potenzreihen (end)
 
 
@@ -377,7 +388,7 @@ Linearität: $(\lambda f + \mu g)' (x) = \lambda f'(x) + \mu g'(x)$ \quad $\fora
 Produktregel: $(f \cdot g)'(x) = f'(x) g(x) + f(x) g'(x)$\\
 Quotientenregel$\enbrace{\frac{\text{NAZ}-\text{ZAN}}{\text{N}^2}}$: $\enbrace{\frac{f}{g}}' (x) = \frac{g(x)f'(x) -f(x) g'(x)}{g(x)^2}$\\
 Kettenregel: $\left( f(g(x)) \right)' = f'(g(x)) g'(x)$\\
-Potenzreihe: $f: ] \underbrace{-R+a, a+R}_{\subseteq D}	 [ \rightarrow \R, f(x) = \sum\limits_{n=0}^{\infty} a_n (x -a)^n$ \quad $\Rightarrow$ \quad $f'(x) = \sum\limits_{n=0}^{\infty} n a_{n} (x-a)^{n-1}$\\
+Potenzreihe: $f: (\underbrace{-R+a, a+R}_{\subseteq D}) \mapsto \R, f(x) = \sum\limits_{n=0}^{\infty} a_n (x -a)^n$ \quad $\Rightarrow$ \quad $f'(x) = \sum\limits_{n=0}^{\infty} n a_{n} (x-a)^{n-1}$\\
 \textbf{Tangentengleichung:} $y=f(x_0)+f'(x_0)(x-x_0)$
 
 \subsubsection{Newton-Verfahren:}
@@ -386,7 +397,8 @@ $x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}$ mit Startwert $x_0$
 \subsubsection{Integrationsmethoden:}
 \begin{itemize}\itemsep0pt
 \item Partielle Integration: $\int uv'=uv-\int u'v$
-\item Substitution: $\int f(\underbrace {g(x)}_{t}) \underbrace {g'(x)\,\mathrm dx}_{\mathrm dt}=\int f(t)\, \mathrm dt$
+\item Substitution: $\int f(\underbrace {g(x)}_{t}) \underbrace {g'(x)\,\mathrm dx}_{\mathrm dt}=\int f(t)\, \mathrm dt$ \\
+Grenzen anpassen: Grenzen in original Funktion einsetzen
 \item Brechstange: $t=\tan(\frac{x}{2})$ \quad $\mathrm dx = \frac{2}{1+t^2} \mathrm dt$ \\ $\sin(x) \rightarrow \frac{2t}{1+t^2}$ \qquad $\cos(x) \rightarrow \frac{1-t^2}{1+t^2}$
 \end{itemize}
 
@@ -403,6 +415,8 @@ F(x) & f(x) & f'(x) \\ \hline
 \frac{1}{q+1}x^{q+1} & x^q & qx^{q-1} \\
 \frac{2\sqrt{x^3}}{3} & \sqrt{x} & \frac{1}{2\sqrt{x}}\\
 x\ln(x) -x & \ln(x) & \textstyle \frac{1}{x}\\
+(x-a) \ln(x-a) -x & \ln(x-a) & \frac{1}{x-a} \\
+$x ln(a-x)-a ln(x-a)-x$ & -\ln(a-x) & \frac{1}{a-x} \\
 e^x & e^x & e^x \\
 e^{-x} & -e^{-x} & e^{-x} \\
 \frac{a^x}{\ln(a)} & a^x & a^x \ln(a) \\
@@ -415,20 +429,22 @@ x\arccos (x)-\sqrt{1-x^2} & \arccos(x) & -\frac{1}{\sqrt{1-x^2}}\\
 x\arctan (x)-\frac{1}{2} \ln \left| 1+ x^2 \right| & \arctan (x) & \frac{1}{1+x^2} \\
 k^x & k^x \log(k) & k^x \log^2(k) \\
 \cosh(x) & \sinh(x) & \cosh(x) \\
-$arcsinh$(x) & \frac{1}{\sqrt{1+x^2}} & -\frac{x}{(x^2+1)^{3/2}}
+$arcsinh$(x) & \frac{1}{\sqrt{1+x^2}} & -\frac{x}{\enbrace{x^2+1}^{3/2}}
 \end{array}
 \end{math}
 \everymath{\textstyle}
 
 
 \subsubsection{Rotationskörper}
-Volumen: $V = \pi \int_a^b f(x)^2 \mathrm dx$\\
-Oberfläche: $O = 2 \pi \int_a^b f(x) \sqrt{1 + f'(x)^2} \mathrm dx$
+Volumen: $V = \pi \int\limits_a^b f(x)^2 \mathrm dx$\\
+Oberfläche: $O = 2 \pi \int\limits_a^b f(x) \sqrt{1 + f'(x)^2} \mathrm dx$
 
 \subsubsection{uneigentliches Integral}
+bei unbeschränkten Intervallen also z.B.: \\
 $\int\limits_0^\infty f(x) \mathrm dx = \lim\limits_{M\rightarrow \infty}\ \int\limits_{\text{0}}^M f(x) \mathrm dx = \lim\limits_{M \rightarrow \infty} [F(x)] _0^M$\\
 \\
-z.B. $\int\limits_{1}^{\infty} \frac{1+\ln x}{x^x} dx = \lim_{M \rightarrow \infty} … (siehe loesung15-z.pdf) $\\
+z.B. $\int\limits_{1}^{\infty} \frac{1+\ln x}{x^x} dx = \lim\limits_{M \rightarrow \infty} \int\limits_1^M \frac{1+\ln x}{x^x} dx = \lim\limits_{M \rightarrow \infty} \int\limits_1^M \frac{1+ln x}{e^{x ln x}} \\
+ = \int\limits_0^{M ln M} \frac{1}{e^y} dy = … = 1$\\
 Majoranten-Kriterium: $|f(x)|\le g(x)$\\
 $\int\limits_{1}^{\infty} \frac{1}{x^\alpha} \mathrm dx \begin{cases} \frac{1}{\alpha -1}, \quad \alpha > 1 \\ \infty, \qquad \alpha \le 1 \end{cases}$ \qquad
 $\int\limits_{0}^{1} \frac{1}{x^\alpha} \mathrm dx \begin{cases} \frac{1}{\alpha -1}, \quad \alpha < 1 \\ \infty, \qquad \alpha \ge 1 \end{cases}$\\
@@ -450,26 +466,26 @@ $\int\frac{Bx+C}{(\lambda)^m} \mathrm dx \begin{cases} \frac{B}{2} \ln(\lambda) 
 
 \subsection{Taylor-Polynom}
 $T_m(x_0;x)=\sum\limits_{k=0}^m\frac{f^{(k)} (x_0)}{k!} (x-x_0)^k$  \\
-Falls $x_0 \in I =(a,b)$ und $ f: I \rightarrow \R$ zweimal stetig diffbar: \\
+Falls $x_0 \in I =(a,b)$ und $ f: I \mapsto \R$ zweimal stetig diffbar: \\
 Restglied: $r(x)=f(x)-g(x)$ mit $g(x)=f(x_0)-f'(x_0)(x-x_0)$ \\
-$ =\int\limits_{x_0}^x f''(t)(x-t) dt$
+$ =\int\limits_{x_0}^x f''(t)(x-t) dt$ \\
+bzw. für jedes $x \in I$ gibt es ein $\xi_x \in (x_0,x)$ oder $\xi_x \in (x, x_0)$ mit \\
+$r(x)=\frac{(x-x_0)^2}{2}f''(\xi_x)$
 
 \subsection{Taylor-Reihe}
 Polynome können als Taylor-Reihen ohne Rest dargestellt werden
 
 \subsection{Kurven}
-Kurve: $k(t)$ mit $k \in [a,b]$\\
-Kurven-/Bogenlänge: $L(k)=\int\limits_a^b ||k'(t)|| dt \\
-\lim$ \\
-kann nicht negativ sein \\
+Kurve: $k(t)$ mit $t \in [a,b]$\\
+Kurven-/Bogenlänge: $L(k)=\int\limits_a^b ||k'(t)|| dt$ \\
 Umparametrisierung: $s(t)=\int\limits_a^t || k'(\tau) || d\tau$ \\
 Umparametrisierung nach der Bogenlänge: \\ 
-Bilde $s^-1(\tau)$ (nach $\tau$ auflösen) \\
-dann lautet \\
+Bilde $s^{-1}(\tau)$ (nach $\tau$ auflösen) \\
+$s^{-1}(\tau) ~~ \tilde\kappa(\tau)=k\enbrace{s^{-1}(\tau)} $ \\
 Ableitung: Einzelne Komponenten Ableiten\\
-Norm: \\
-Krümung: \\
-Gradient: 
+Krümung: $\tilde\kappa(t) = \frac{|x'(t)y''(t)-y'(t)x''(t)|}{(x'(t)^2+y'(t)^2)^\frac{3}{2}}$ \\
+bzw. allgemein $\kappa(t)=\frac{1}{||k'(t)||} k'(t)$ \\
+Vorzeichenbehaftet ohne Betrag im Zähler und $\kappa$ statt $\tilde\kappa$
 
 \subsection{Landau Notation ($o~O$)}
 Klein $o$: \\
@@ -480,14 +496,12 @@ $f(x)=O(g(x))$ für $x \rightarrow a$ wenn \\
 $|f(x)| \leq C|g(x)|$ für $x \in (a-\epsilon, a+\epsilon)$
 
 \subsection{Sachen die man in der Schule hätte lernen sollen}
-Polynomdivision: \\
-Quadratisches Ergänzen: \\
 Mitternachtsformel (abc): \\
 $a x^2 + bx + c = 0 \\
-x_{1/2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ \\
+\rightarrow x_{1/2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ \\
 Andere Mitternachtsformel (pq): \\
 $x^2+p x+q=0 \\
-x_{1/2} = -\frac{p}{q} \pm \sqrt{(\frac{p}{q})^2-q}$ \\
+\rightarrow x_{1/2} = -\frac{p}{2} \pm \sqrt{\enbrace{\frac{p}{2}}^2-q}$ \\
 Doppelbruch: $\frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a d}{b c}$ \\
 Binomische Formeln:
 \begin{enumerate}\itemsep-1pt
@@ -497,30 +511,53 @@ Binomische Formeln:
 \item $(a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} \cdot b^k, n \in \N$
 \item $(a \pm b)^3 = a^3 \pm 3 a^2 b + 3 a b^2 \pm b^3$
 \end{enumerate}
+Binomialkoeffizient: $\binom{a}{b} = \frac{n!}{(n-k)! k!}$ \\
 Exponentialfunktion: $\exp(x) = \sum\limits_{n = 0}^\infty \frac{x^n}{n!}$ \\
 Trigonometrische Funktionen: \\
-$\cos x = \frac{\text{Ankathete}}{\text{Hyptenuse}} = \sin (90\degree -x) = \sin({\frac{pi}{2}-x}) \\
+$\cos x = \frac{\text{Ankathete}}{\text{Hyptenuse}} = \sin (90\degree -x) = \sin({\frac{\pi}{2}-x}) \\
 \cos x = \sum\limits_{n=0}^{\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!} \\
-\arccos x = b \\
-\sin x = \frac{\text{Gegenkathete}}{\text{Hypotenuse}} = \cos (x-90\degree) \\
+\arcsin \colon [-1,1]\to \left[-{\frac {\pi }{2}},{\frac {\pi }{2}}\right] \\
+\arccos \colon [-1,1]\to [0,\pi ] \\
+\arccos(x)+\arcsin(x)={\frac {\pi }{2}} \\
+\sin x = \frac{\text{Gegenkathete}}{\text{Hypotenuse}} = \cos (x-90\degree) = \frac{2 \tan\enbrace{\frac{x}{2}}}{1+\tan^2\enbrace{\frac{x}{2}}} \\
 \sin x = \cos(x-\frac{\pi}{2})=\sum\limits_{n=0}^{\infty}\frac{x^{2n+1}}{(2n+1)!} \\
-\arcsin x \\
-\tan x = \frac{\text{Gegenkathete}}{\text{Ankathete}} = \frac{\sin x}{\cos x}\\
-\cot x = \frac{\text{Ankathete}}{\text{Gegenkathete}} = \frac{\cos x}{\sin x}\\
+\tan x = \frac{\text{Gegenkathete}}{\text{Ankathete}} = \frac{1}{\cot} = \frac{\sin x}{\cos x}\\
+\cot x = \frac{\text{Ankathete}}{\text{Gegenkathete}} = \frac{1}{\tan} = \frac{\cos x}{\sin x}\\
 \cos^2 x + \sin^2 x = 1 \Rightarrow \cos x = \sqrt{1+\sin^2 x} ~ \text{für} ~ \frac{-\pi}{2} \leq x \leq \frac{\pi}{2} \\
 \sinh^2 x - \cosh^2 x = 1 \\
-\sec = \\
-\csc = \\
+\sec = \frac{1}{cos(x)} \\
+\csc = \frac{1}{sin(x)} \\
 \cosh = \frac{e^x+e^{-x}}{2} = \sum\limits_{k=0}^{\infty}\frac{x^{2k}}{(2k)!} \\ 
 \sinh = \frac{e^x-e^{-x}}{2} = \sum\limits_{k=0}^{\infty}\frac{x^{1+2k}}{(1+2 k)!} \\
 x^x = e^{x \ln x} \\
 \frac{c}{\frac{a}{b}}=\frac{c\cdot b}{a} \\
-\ln(a)-\ln(b)=\ln\frac{a}{b}$ \\
-\includesvg[height=4cm]{Mplwp_trigonometric_functions_piaxis} \\
-\includesvg[height=4cm]{Circle-trig7} \\
-\includesvg[height=4cm]{Log4} \\
-\includegraphics[height=4cm]{Exp_e.png} \\
+\ln(a)-\ln(b)=\ln\frac{a}{b} \\
+1+\tan ^{{2}}x={\frac {1}{\cos ^{{2}}x}}=\sec ^{{2}}x \\
+1+\cot ^{{2}}x={\frac {1}{\sin ^{{2}}x}}=\csc ^{{2}}x \\
+\sin x = \frac{e^{ix}-e^{-ix}}{2i} \\
+\cos x = \frac{e^{ix}+e^{-ix}}{2} \\
+\sin^2 x = \sum\limits_{n=1}^\infty(-1)^{n+1} \frac{2^{2n-1}}{(2n)!}x^{2n} \\
+\cos (2x) = 1-2sin^2 x \\
+\\
+$Symmetrie:$ \\
+\sin(-x)=-\sin(x) \\
+\cos(-x)=+\cos(x) \\
+\tan(-x)=-\tan(x) \\
+\cot(-x)=-\cot(x) \\
+\sec(-x)=+\sec(x) \\
+\csc(-x)=-\csc(x)$
+
 \end{multicols}
+
+\newpage
+\begin{multicols}{2}
+\includesvg[height=6cm]{Mplwp_trigonometric_functions_piaxis} \\
+\includesvg[height=6cm]{Circle-trig7} \\
+\includegraphics[height=8cm]{funktionen.png} \\
+\includesvg[height=6cm]{Log4} \\
+\includegraphics[height=6cm]{Exp_e.png} \\
+\end{multicols}
+
 % Ende der Spalten
 
 
