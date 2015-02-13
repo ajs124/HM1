@@ -279,6 +279,190 @@ x & 0 & \frac{\pi}{6} & \frac{\pi}{4} & \frac{\pi}{3} & \frac{\pi}{2} & \pi & \f
 \subsubsection{Umkehrfunktion}
 x(t): nach t auflösen\\
 
+\subsection{Matrizen}
+% ----------------------------------------------------------------------
+Eine Matrix ist eine Tabelle aus mathematischen Objekten.
+Die Matrix $A=(a_{ij}) \in \mathbb K^{m\times n}$ hat $m$ Zeilen mit Index $i$ und $n$ Spalten mit Index $j$
+
+\subsubsection{Allgemeine Rechenregeln}
+\textbf{Merke:} Zeile vor Spalte! (Multiplikation, Indexreihenfolge, etc...)\\
+
+\begin{tabular}{ll}	
+	1)  $A+0=A$ & 2)  $1 \cdot A=A$ \\
+	3)  $A+B=B+A$ & 4) $A \cdot B \ne B \cdot A$ (im allg.) \\
+	5)  $(A+B)+C=A+(B+C)$ & 6) $\lambda (A+B) = \lambda A + \lambda B$\\ 
+\end{tabular}
+Multiplikation von $A\in \mathbb K^{m\times r}$ und $B\in \mathbb K^{r\times n}$: $AB\in\mathbb K^{m\times n}$
+
+\subsubsection{Transponieren}
+Falls $A=(a_{ij})\ \in \mathbb K^{m\times n}$ gilt: $A^\top=(a_{ji})\ \in \mathbb K^{n\times m}$\\
+Regeln:\\
+$(A+B)^\top=A^\top+B^\top$\qquad $(A\cdot B)^\top=B^\top\cdot A^\top$\qquad \\ $(\lambda A)^\top=\lambda A^\top$ \qquad $(A^\top)^\top=A$\\
+\\
+$A\in \mathbb K^{n\times n}$ ist symmetrisch, falls $A=A^\top$\qquad ($\Rightarrow$ diagbar)\\
+$A\in \mathbb K^{n\times n}$ ist schiefsymmetrisch, falls $A=-A^\top$\\
+$A\in \mathbb K^{n\times n}$ ist orthogonal(Spaltenvektoren=OGB), falls:\\
+\qquad\ $AA^\top=E_n$\qquad $A^\top=A^{-1}$\qquad $\det A=\pm 1$\\
+$A\in \mathbb C^{n\times n}$ ist hermitesch, falls $A=\overline{A}^\top$  \quad (kmplx. konj. u. transp.)
+
+
+\subsubsection{Inverse Matrix $A^{-1}\in \mathbb K^{n\times n}$}
+für die inverse Matrix $A^{-1}$ von $A\in \mathbb K^{n\times n}$ gilt: $A^{-1}A=E_n$\\
+$(A^{-1})^{-1}=A$ \qquad $(AB)^{-1}=B^{-1}A^{-1}$ \qquad $(A^\top)^{-1}=(A^{-1})^\top$\\
+\\
+$A\ \in \mathbb R^{n\times n}$ ist invertierbar, falls: $\det (A) \ne 0 \quad \lor \quad rg(A)=n$\\
+\\
+Berechnen von $A^{-1}$ nach Gauß:\\
+$AA^{-1}=E_n\quad\Rightarrow\quad (A|E_n)\overset{EZF}{\longrightarrow}(E_n|A^{-1})$\\
+
+\subsubsection{Elementare Zeilen/Spaltenumformungen(EZF/ESF)}
+$A \in \mathbb K^{m\times n}$ hat $m$ Zeilen $z_i\in \mathbb K^n$ und $n$ Spalten $s_j\in \mathbb K^m$
+\begin{itemize}\itemsep0pt
+\item \textbf{Addition} ($\lambda\ne 0$):\quad $\lambda_1 z_1 + \lambda_2  z_2$ \quad / \quad $\lambda_1  s_1 + \lambda_2 s_2$
+\item Vertauschen von Zeilen/Spalten
+\item Multiplikation mit $\lambda\ne 0$: \quad $\lambda \cdot z$ \quad  / \quad  $\lambda \cdot s$
+\end{itemize}
+
+\subsubsection{Rang einer Matrix $A$}
+$A\in \mathbb K^{m\times n}$ mit $r$ lin. unabhängige Zeilen und $l$ "Nullzeilen":\\
+Rang von $A$: $\mathrm{rg}(A)=m-l=r$\\  
+Vorgehensweise: \\
+\textbf{Zeilenrang (A):} Bringe $A$ auf ZSF $\Ra$ Zeilenrang$(A) = rg(A)$\\     
+\textbf{Zeilenraum (A):}  $Z_A = \text{ Zeilen ungleich } 0$            \\
+\textbf{Spaltenrang:} Bringe Matrix auf Spaltenstufenform        \\
+\textbf{Kern:  }   $\ker(A) = \dme{x \in \mathbb R^n}{Ax= 0}$ \qquad $\mathrm{dim}(\ker(A))=n-r$ \\
+\textbf{Bild: } $A^T \Ra EZF \Ra $ Zeilen $(\not= 0)$ bilden die Basis vom Bild. Die (lin. unabhängigen) Spalten von $A$ bilden eine Basis vom Bild.
+\subsubsection{Lineares Gleichungssystem LGS}
+Das LGS $Ax=b$ kurz $(A|b)$ mit $A\in \mathbb K^{m\times n}$, $x\in \mathbb K^n$, $b\in \mathbb K^m$ hat $m$ Gleichungen und $n$ Unbekannte.\\
+\\
+\textbf{Lösbarkeitskriterium:}\\
+Ein LGS $(A|b)$ ist genau dann lösbar, wenn: $\mathrm{rg}(A)=\mathrm{rg}(A|b))$\\
+Die Lösung des LGS $(A|b)$ hat $\dim{\ker A} = n-\mathrm{rg}(A)$ frei wählbare Parameter.\\
+\\
+Das homogene LGS: $(A|0)$ hat stets die triviale Lösung $0$\\
+Das LGS hat eine Lsg. wenn $\det A \not= 0$ \quad $\rightarrow \exists A^{-1}$ \\
+Summen und Vielfache der Lösungen von $(A|0)$ sind wieder Lösungen.
+
+\subsubsection{Determinante von $A\in \mathbb K^{n\times n}$: $\det(A)=|A|$}
+
+\begin{itemize}\itemsep0pt
+\item $\det\begin{pmatrix}A&0\\C&D\end{pmatrix}=\det\begin{pmatrix}A&B\\0&D\end{pmatrix}=\det(A)\cdot\det(D)$
+\item $\begin{vmatrix}\lambda_1&&* \\ &\ddots& \\ 0&&\lambda_n \end{vmatrix} = \lambda_1\cdot \ldots\cdot \lambda_n = \begin{vmatrix} \lambda_1&&0  \\  &\ddots& \\  *&&\lambda_n \end{vmatrix}$
+\item $A=B \cdot C \quad \Rightarrow \quad |A|=|B| \cdot |C|$
+\item $\det(A)=\det(A^\top)$
+\item Hat $A$ zwei gleiche Zeilen/Spalten $\Rightarrow |A|=0$
+\item $|A|=\sum\limits_{i=1}^n (-1)^{i+j} \cdot a_{ij} \cdot |A_{ij}|$ \qquad Entwcklng. n. $i$ter Zeile.
+\item $\det(\lambda A)=\lambda^n \det(A)$
+\item Ist $A$ invertierbar, so gilt: $\det(A^{-1})=(\det(A))^{-1}$
+\item Vertauschen von Zeilen/Spalten ändert Vorzeichen von $|A|$
+\item $\det(AB) = \det(A) \det(B) = \det(B) \det(A) = \det(BA)$
+\end{itemize}
+Vereinfachung für Spezialfall $A\in \mathbb K^{2\times 2}$:\\
+$A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in \mathrm{K}^{2\times 2}\Rightarrow \det(A)=|A|=ad-bc$
+
+
+
+
+
+
+\subsection{Vektorräume}
+% --------------------------------------------------------------
+Eine nichtleere Menge V mit zwei Verknüpfungen $+$ und $\cdot$ heißt $K$-Vektorraum über dem Körper $\mathbb K$.\\
+\textbf{Linear Unabhängig:}
+Vektoren heißen linear unabhängig, wenn aus: \\
+$\lambda_1 \vec v_1 + \lambda_2 \vec v_2 + \ldots + \lambda_n \vec v_n = \vec 0$ folgt, dass $\lambda_1 = \lambda_2 = \lambda_n = 0$
+\subsubsection{Skalarprodukt $\langle v,w \rangle$} 
+	\begin{description}
+	\item[Bilinear:] $\langle \lambda v+v',w \rangle=\lambda\cdot\langle v,w \rangle + \langle v',w \rangle$
+	\item[Symmetrisch:] $\langle v,w \rangle=\langle w,v \rangle$
+	\item[Positiv definit:] $\langle v,v \rangle\ge0$ 
+	\item[Im kartesischen Koordinatensystem:] $\langle v,w \rangle=v_1 w_1+…+v_n w_n$
+	\end{description}  
+Skalarprodukt bezüglich \textbf{symmetrischer, quadratischer} und \textbf{positiv definite} Matrix $A\in \mathbb R^{n\times n}$\\
+$\langle v,w \rangle_A=v^T A w$\\
+Matrix A positiv definit falls $\det (a_{11}) > 0 \land \det \left(\begin{matrix} a_11 & a_12\\ a_21 & a_22\end{matrix}\right) > 0 \land \dotsc \land \det (A)>0$   \\
+\textbf{Orthogonale Projektion} $p\in U^n$ von $q\in V^m$ auf $\sum u_i$:
+\begin{eqnarray*}
+   p=\sum_{i=1}^n \sprod{q}{\frac{u_i}{\abs{u_i}}}\frac{u_i}{\abs{u_i}} \quad = q - p^\perp
+\end{eqnarray*} 
+\textbf{Winkel} \quad 	$\sprod{\vec a}{\vec b} = a \cdot b \cdot \cos \phi$ \qquad
+$\phi = \arccos \enbrace{ \frac{\sprod{x}{y} }{\norm{x} \norm{y} } }$\\
+\textbf{Polynome} $<p(x),q(x)>=\int\limits_{0}^{1}p(x)q(x)\,dx$
+
+\subsubsection{Betrag von Vektoren}
+$
+||\vec a||=\sqrt{<\vec a,\vec a>} =\sqrt{a_1^2+a_2^2+\ldots +a_n^2}
+$
+
+
+\subsubsection{Orthogonalität}
+\textbf{Orthonormalisierungsvefahren von $n$ Vektoren nach Gram-Schmidt:}\\
+1. $b_1=\frac{v_1}{\|v_1\|}$ \qquad (Vektor mit vielen 0en oder 1en)\\
+2. $b_{k+1}= \frac{b_{k+1}^{'}}{\|b_{k+1}^{'}\|}$\ \ mit \ \ $b_{k+1}^{'}=v_{k+1}-\sum_{i=1}^k \langle v_{k+1},b_i \rangle \cdot b_i$\\
+\\
+\textbf{Ausgleichsrechnung:}\\
+Experiment: $(t_1,y_1), \hdots, (t_n,y_n)$\\
+$f_1: \mathbb R \rightarrow \mathbb R, f_1(x) =1$ \qquad $f_2: \mathbb R \rightarrow \mathbb R, f_2(x) = x$
+\begin{eqnarray*}
+\Rightarrow A = \begin{pmatrix}f_1(t_1) & f_2(t_1)\\\vdots & \vdots\\f_1(t_n) & f_2(t_n)\end{pmatrix} \qquad v = \begin{pmatrix}y_1\\\vdots\\y_n\end{pmatrix}
+\end{eqnarray*}
+$A^{\top}Ax=A^{\top}v \rightarrow $ LGS lösen nach x\\
+$f: \mathbb R \rightarrow \mathbb R, f(x) = x_1 f_1(x) + \hdots + x_n f_n(x)$
+\\
+\textbf{Orthogonale Projektion in UVR:} \quad \\
+1. Normiere Basis von $U$. \\
+2. $u = \sprod{b_1}{v}b_1 + \sprod{b_2}{v}b_2 \ldots \Ra u^\perp = v - u$ \\
+Abstand von $v$ zu $U$: $\norm{u^{\perp}}$
+
+\subsubsection{Vektorprodukt}
+$\vec a\times\vec b=\left( \begin{matrix} a_2b_3-a_3b_2\\a_3b_1-a_1b_3\\a_1b_2-a_2b_1\end{matrix}\right)$\qquad $\vec a,\vec b\ \in \mathbb R^3$\\
+\\
+$\vec a\times\vec b \perp \vec a,\vec b$ \qquad ($\vec a\times\vec b=0\ \Leftrightarrow\ \vec a;\vec b$\ linear abhängig.\\
+$||\vec a\times\vec b||=||\vec a||\cdot||\vec b||\cdot \sin\left(\measuredangle (\vec a;\vec b)\right)\mathrel{\widehat{=}}$\ Fläche des Parallelogramms\\
+Graßmann-Identität: $\vec a\times(\vec b \times \vec c)\equiv\vec b\cdot(\vec a \cdot \vec c)-\vec c\cdot(\vec a \cdot \vec b)$\\
+\\
+Spatprodukt:\\
+$[a,b,c]:=\langle \vec a\times\vec b,\vec c\rangle=\det (a,b,c)\mathrel{\widehat{=}}$\ Volumen des Spates.\\
+$[a,b,c]>0\ \Rightarrow\ a,b,c$\ bilden Rechtssystem \\ $[a,b,c]=0\ \Rightarrow\ a,b,c$\ linear abhängig\\ \\
+Orthogonale Zerlegung eine Vektors v längs a:\\
+$v = v_a + v_{a^\perp} \text{ mit } v_a = \frac{\sprod{v}{a} }{\sprod{a}{a} }*a \text{ und }	 v_{a^\perp} = v - v_a	$
+\subsubsection{Basis (Jeder VR besitzt eine Basis!)} % (fold)
+\label{sub:basis}
+ Eine Teilmenge $B$ heißt Basis, von $V$ wenn gilt:
+\begin{itemize}\itemsep0pt
+	\item $\left\langle B \right\rangle =V$  $B$ erzeugt $V$
+	\item $B$ ist linear unabhängig
+\end{itemize}                   
+
+
+% subsection basis (end)
+\subsubsection{Dimension} % (fold)
+\label{sub:dimension}
+  \begin{eqnarray*}
+  	   n:= \abs{B} \in \mathbb N_0 \text{ Dimension von }V \quad & \quad \dim (V) = n
+  \end{eqnarray*}   
+Mehr als $n$ Vektoren sind stehts linear abhängig. \\
+Für jeden UVR $U \subset V$ gilt: $\dim (U) < \dim (V)$ 
+% subsection dimension (end)
+
+
+
+
+
+
+\subsection{Untervektorräume}
+Eine Teilmenge $U$ eines $K-$Vektorraums $V$ heißt Untervektorraum (U-VR) von $V$, falls gilt:
+\begin{enumerate}\itemsep0pt
+\item $U\neq \varnothing$ \qquad ($0\in U$)
+\item $u+v\in U \quad \forall u,v\in U$
+\item $\lambda u \in U \qquad \forall u\in U,\forall \lambda \in K$
+\end{enumerate}
+Wegen (3.) enthält ein UVR $U$ stets den Nullvektor $0$. Daher zeigt man (1.) meist, indem man $0\in U$ nachweist.\\
+\\
+\textbf{Triviale UVR}: $U=\{0\}$ mit $B = \emptyset$ \qquad $U=V$ mit $B_U=B_V$
+
+
+
 \subsection{Folgen}
 % ----------------------------------------------------------------------
 Eine Folge ist eine Abbildung $a: \N_0 \mapsto \R,\ n \rightarrow a(n) =: a_n$\\
