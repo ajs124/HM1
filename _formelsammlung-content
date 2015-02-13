@@ -1,0 +1,72 @@
+Definitionen:
+	Linear (un)abhängig:
+		Matrix M=(v1,v2,v3) ; det(M)!=0 → unabhängig
+		v1*a=v2 (a in setR) → abhängig
+	Linearkombination:
+	Linearität einer Abbildung:
+	
+	Orthonormalbasis:
+	Erzeugengensystem:
+		
+	Norm:
+		VR V: ||.||:V→R heißt Norm falls für alle v,w in V, λ in R gilt
+		1. ||v||>= 0, ||v||=0 <-> v=0
+		2. ||λ*v||=|λ|*||v||
+		3. ||v+w||<=||v||+||w||
+	Skalarprodukt:
+		
+	Kreuzprodukt
+	Determinante:
+		2x2: a*d-c*b
+		3x3: a11*a22*a33+a12*a23*a31+a13*a21*a32-a31*a22*a13-a32*a23*a11-a33*a21*a12
+		Dreiecksmatrix: Produkt aus Elementen der Hauptdiagonalen
+		allgemein: Gauß-Elimination → Dreiecksmatrix
+	Kern
+		det(A)=0 → Kern existiert
+		A*v=0 → v=Kern
+		LGS → Gaußelimination
+	Rang
+	Raum
+	Basis
+		Kanonische (Standard)
+		minimales Erzeugendensystem
+	Vektorraum (?)
+	Unterraum:
+		
+	Matrixprodukt
+	injektiv + surjektiv + bijektiv
+	Additionstheoreme
+	Bild	
+	Dimension (?)
+	Diagonalmatrix:
+		Eine quadratische Matrix, bei der alle Elemente außerhalb der Hauptdiagonalen gleich Null sind
+		Determinante ist das Produkt der Einträge auf der Hauptdiagonalen
+		Rang einer Diagonalmatrix lässt sich direkt ablesen (Anzahl der Nicht-Null-Zeilen)
+		Eigenwerte sind die Einträge auf den Hauptdiagonalen mit den kanonischen Einheitsvektoren als Eigenvektoren
+	Triagonalmatrix: 
+	Eigenwert und Eigenvektor:
+		nur von quadratischen Matrizen
+		Werte:	det(A-λ*I)
+			algebraische Vielfachheit:	entspricht der Vielfachheit der Nullstelle im charakteristischen Polynom
+			mathematische Vielfachheit:	Dimension des zugehörigen Eigenraums
+		Vektoren:
+			A*x=λ*x → x=vektor λ=wert
+			Eigenwert für λ einsetzen + Gauß-Elimination
+			Kern(A-Eigenwert*I)
+	Eigenraum:
+	Diagonalisierbarkeit:
+		Das charakteristische Polynom zerfällt vollständig in Linearfaktoren/besitzt (mind.?) n Nullstellen (bei n x n Matrix)
+		Die geometrischen und algebraischen Vielfachheiten der Eigenwerte stimmen überein
+	Laplace'scher Entwicklungssatz:
+		
+	Schurzerlegung:
+		Eigenwerte berechnen
+		Eigenvektoren berechnen
+		ONB berechnen (Gram-Schmidt oder raten)
+	Singulärwertszerlegung:
+	
+	Trigonometrische Funktionen:
+		(Ausschnitt von -1;1 von sin, cos, tan, arcsin, cot, … in einem Koordinatensystem)
+	Phasenportrait:
+		Harmonischer Oszilator
+	Stabilität:

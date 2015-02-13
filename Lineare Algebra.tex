@@ -1,0 +1,133 @@
+% Mathe Formelsammlung für Lineare Algebra WS 2014/15
+% 2 Seiten
+
+% Dokumenteinstellungen
+% ======================================================================	
+
+% Dokumentklasse (Schriftgröße 8, DIN A4, Artikel)
+\documentclass[8pt,a4paper]{scrartcl}
+
+% Pakete laden
+\usepackage[utf8]{inputenc}		% Zeichenkodierung: UTF-8 (für Umlautge)   
+\usepackage[german]{babel}		% Deutsche Sprache
+\usepackage{multicol}			% Spaltenpaket
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}				% erweiterte Integralsymbole
+\usepackage{multicol}			% ermöglicht Seitenspalten  
+\usepackage{wasysym}			% Blitz
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{svg}
+
+% Mengen
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\C}{\ensuremath{\mathbb C}}
+\newcommand{\Q}{\ensuremath{\mathbb Q}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+
+% https://tex.stackexchange.com/questions/2705/typesetting-column-vector
+\newcount\colveccount
+\newcommand*\colvec[1]{
+	\global\colveccount#1
+	\begin{pmatrix}
+		\colvecnext
+	}
+	\def\colvecnext#1{
+		#1
+		\global\advance\colveccount-1
+		\ifnum\colveccount>0
+		\\
+		\expandafter\colvecnext
+		\else
+	\end{pmatrix}
+	\fi
+}
+
+% Seitenlayout und Ränder:
+\usepackage{geometry}
+\geometry{a4paper, landscape, left=6mm,right=6mm,top=6mm,bottom=6mm} 
+	
+% Schriftart SANS für bessere Lesbarkeit bei kleiner Schrift
+\renewcommand{\familydefault}{\sfdefault}
+\begin{document}
+\begin{multicols}{2}
+\section{idk}
+\begin{itemize}
+	\item{Lineare Abhängigkeit:}
+		\subitem{Matrix $M=\colvec{3}{v_1}{v_2}{v_3}~~ det(M)=0 \rightarrow $ unabhängig}
+		\subitem{$v_1*a=v_2 ~ ;a \in \R \rightarrow$ abhängig}
+	\item{Linearkombination}
+	\item{Linearität einer Abbildung}
+	\item{Erzeugendensystem}
+	\item{Raum}
+	\item{Vektorraum}
+	\item{Unterraum}
+	\item{Norm: gegeben VR V heißt $||.||: V \mapsto \R$ Norm, falls für alle $v, w \in V; \lambda \in \R$ gilt}
+	\begin{enumerate}
+		\item{$||v|| \geq 0, ||v||=0 \Leftrightarrow v=0$}
+		\item{$||\lambda \cdot v||=|\lambda|\cdot||v||$}
+		\item{$||v+w||\leq||v||+||w||$}
+	\end{enumerate}
+	\item{Skalarprodukt}
+	\item{Vektorprodukt}
+	\item{Determinante: allgemein nur bei quadratische ($n \times n$) Matrizen}
+		\subitem{für $2 \times 2$ Matrizen: $M=\begin{pmatrix}	a & b \\ c & d 	\end{pmatrix}
+		~ \rightarrow ~ det(M)=a \cdot d - c \cdot b$}
+		\subitem{für $3 \times 3$ Matrizen: $M\begin{pmatrix}
+		a_{11} & a_{12} & a_{13} \\
+		a_{21} & a_{22} & a_{23} \\
+		a_{31} & a_{32} & a_{33}
+		\end{pmatrix}
+		\\\rightarrow det(M)=a_{11} \cdot a_{22} \cdot a_{33}+a_{12} \cdot a_{23} \cdot a_{31}+a_{13} \cdot a_{21} \cdot a_{32}-a_{31} \cdot a_{22} \cdot a_{a13}-a_{32} \cdot a_{23} \cdot a_{11}-a_{33} \cdot a_{21} \cdot a_{12}$}
+	\subitem{Dreiecksmatrix: Produkt aus Elementen der Hauptdiagonale = $\prod\limits_{0}^{n} a_{nn}$}
+	\item{Kern}
+		\subitem{$det(A)=0 ~\rightarrow$ Kern existiert}
+		\subitem{$A \cdot v=0 ~ \rightarrow ~ v=$ Kern \qquad LGS $\rightarrow$ Gaußelimination}
+	\item{Rang}
+	\item{Basis: minimales Erzeugendensystem}
+		\subitem{Kanonische/Standartdbasis: $E=\begin{pmatrix}
+		\colvec{4}{1}{0}{…}{0},&\colvec{4}{0}{1}{…}{0},&\colvec{4}{0}{0}{…}{1} \\
+		\end{pmatrix}$}
+	\item{Orthonormalbasis}
+	\item{Matrixprodukt}
+	\item{injektiv}
+	\item{surjektiv}
+	\item{bijektiv}
+	\item{Additionstheoreme}
+	\item{Bild}
+	\item{Dimension}
+	\item{Diagonalmatrix}
+		\subitem{Eine quadratische ($n \times n$) Matrix, bei der alle Elemente außerhalb der Hauptdiagonale gleich 0 sind}
+		\subitem{Determinante ist das Produkt der Einträge auf der Hauptdiagonalen}
+		\subitem{Rang lässt sich direkt ablesen; Anzahl der Nicht-Null-Zeilen}
+		\subitem{Eigenwerte sind die Einträge auf der Hauptdiagonalen mit den kanonischen Einheitsvektoren als Eigenvektoren}
+	\item{Triagonalmatrix}
+	\item{charakteristisches Polynom}
+	\item{Eigenwert: nur von quadratischen Matrizen}
+		\subitem{$det(A-\lambda \cdot I)$}
+			\subsubitem{algebraische Vielfachheit: entspricht der Vielfachheit der Nullstellen im charakteristischen Polynom}
+			\subsubitem{mathematische Vielfachheit: Dimension des zugehörigen Eigenraums}
+	\item{Eigenvektor: nur von quadratischen Matrizen}
+		\subitem{$A\cdot x = \lambda \cdot x \rightarrow x=$ Eigenvektor; $\lambda=$ Eigenwert}
+	\item{Eigenraum}
+	\item{Diagonalisierbarkeit}
+		\subitem{Das charakteristische Polynom zerfällt vollständig in Linearfaktoren bzw. besitzt $n$ Nullstellen}
+		\subitem{Die geometrische und algebraische Vielfachheit stimmen überein}
+	\item{Laplace'scher Entwicklungssatz}
+	\item{Gram-Schmidt Verfahren}
+	\item{Schurzerlegung}
+		\begin{enumerate}
+			\item{Eigenwerte berechnen}
+			\item{Eigenvektoren berechnen}
+			\item{Orthonormalbasis berechnen (Gram-Schmidt oder raten)}
+		\end{enumerate}
+	\item{Singulärwertzerlegung}
+	\item{Phasenportät}
+		\subitem{Harmonischer Oszilator}
+	\item{Stabilität}
+\end{itemize}
+\includesvg[height=6cm]{Mplwp_trigonometric_functions_piaxis}
+\end{multicols}
+\end{document}
