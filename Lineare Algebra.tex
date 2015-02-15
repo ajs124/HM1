@@ -5,7 +5,7 @@
 % ======================================================================	
 
 % Dokumentklasse (Schriftgröße 8, DIN A4, Artikel)
-\documentclass[8pt,a4paper]{scrartcl}
+\documentclass[7pt,a4paper]{scrartcl}
 
 % Pakete laden
 \usepackage[utf8]{inputenc}		% Zeichenkodierung: UTF-8 (für Umlautge)   
@@ -14,7 +14,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{esint}				% erweiterte Integralsymbole
-\usepackage{multicol}			% ermöglicht Seitenspalten  
 \usepackage{wasysym}			% Blitz
 \usepackage{graphicx}
 \usepackage{gensymb}
@@ -26,6 +25,17 @@
 \newcommand{\C}{\ensuremath{\mathbb C}}
 \newcommand{\Q}{\ensuremath{\mathbb Q}}
 \newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\K}{\ensuremath{\mathbb K}}
+
+\newcommand{\enbrace}[1]{\ensuremath{\left(#1\right)}}
+\newcommand{\sprod}[2]{\ensuremath{%
+		\setbox0=\hbox{\ensuremath{#2}}
+		\dimen@\ht0
+		\advance\dimen@ by \dp0
+		\left\langle #1\rule[-\dp0]{0pt}{\dimen@},#2\right\rangle}}
+\newcommand{\norm}[2][\relax]{\ifx#1\relax \ensuremath{\left\Vert#2\right\Vert}\else \ensuremath{\left\Vert#2\right\Vert_{#1}}\fi}
+\newcommand{\dme}[2]{\ensuremath{\left\{#1\,\vert\,#2 \right\}}}
+\newcommand{\abs}[1]{\ensuremath{\left\vert#1\right\vert}}
 
 % https://tex.stackexchange.com/questions/2705/typesetting-column-vector
 \newcount\colveccount
@@ -52,82 +62,331 @@
 % Schriftart SANS für bessere Lesbarkeit bei kleiner Schrift
 \renewcommand{\familydefault}{\sfdefault}
 \begin{document}
-\begin{multicols}{2}
-\section{idk}
-\begin{itemize}
-	\item{Lineare Abhängigkeit:}
-		\subitem{Matrix $M=\colvec{3}{v_1}{v_2}{v_3}~~ det(M)=0 \rightarrow $ unabhängig}
-		\subitem{$v_1*a=v_2 ~ ;a \in \R \rightarrow$ abhängig}
-	\item{Linearkombination}
-	\item{Linearität einer Abbildung}
-	\item{Erzeugendensystem}
-	\item{Raum}
-	\item{Vektorraum}
-	\item{Unterraum}
-	\item{Norm: gegeben VR V heißt $||.||: V \mapsto \R$ Norm, falls für alle $v, w \in V; \lambda \in \R$ gilt}
+\begin{multicols}{3}
+\section{Stuff… dis gon be gud}
+\begin{itemize}\itemsep0pt
+	\item Lineare Abhängigkeit:
+		\subitem Matrix $M=\colvec{3}{v_1}{v_2}{v_3}~~ det(M)=0 \rightarrow $ unabhängig
+		\subitem $v_1*a=v_2 ~ ;a \in \R \rightarrow$ abhängig
+	\item Linearkombination
+	\item Linearität einer Abbildung; Bedingungen:
 	\begin{enumerate}
-		\item{$||v|| \geq 0, ||v||=0 \Leftrightarrow v=0$}
-		\item{$||\lambda \cdot v||=|\lambda|\cdot||v||$}
-		\item{$||v+w||\leq||v||+||w||$}
+		\item ist $f(0)=0$?
+		\item sei $v,w \in V, \alpha \in \R$
+			\subitem $f(v+w) = f(v)+f(w)$
+			\subitem $f(\alpha v) = \alpha f(v)$
 	\end{enumerate}
-	\item{Skalarprodukt}
-	\item{Vektorprodukt}
-	\item{Determinante: allgemein nur bei quadratische ($n \times n$) Matrizen}
-		\subitem{für $2 \times 2$ Matrizen: $M=\begin{pmatrix}	a & b \\ c & d 	\end{pmatrix}
-		~ \rightarrow ~ det(M)=a \cdot d - c \cdot b$}
-		\subitem{für $3 \times 3$ Matrizen: $M\begin{pmatrix}
-		a_{11} & a_{12} & a_{13} \\
-		a_{21} & a_{22} & a_{23} \\
-		a_{31} & a_{32} & a_{33}
-		\end{pmatrix}
-		\\\rightarrow det(M)=a_{11} \cdot a_{22} \cdot a_{33}+a_{12} \cdot a_{23} \cdot a_{31}+a_{13} \cdot a_{21} \cdot a_{32}-a_{31} \cdot a_{22} \cdot a_{a13}-a_{32} \cdot a_{23} \cdot a_{11}-a_{33} \cdot a_{21} \cdot a_{12}$}
-	\subitem{Dreiecksmatrix: Produkt aus Elementen der Hauptdiagonale = $\prod\limits_{0}^{n} a_{nn}$}
-	\item{Kern}
-		\subitem{$det(A)=0 ~\rightarrow$ Kern existiert}
-		\subitem{$A \cdot v=0 ~ \rightarrow ~ v=$ Kern \qquad LGS $\rightarrow$ Gaußelimination}
-	\item{Rang}
-	\item{Basis: minimales Erzeugendensystem}
-		\subitem{Kanonische/Standartdbasis: $E=\begin{pmatrix}
-		\colvec{4}{1}{0}{…}{0},&\colvec{4}{0}{1}{…}{0},&\colvec{4}{0}{0}{…}{1} \\
-		\end{pmatrix}$}
-	\item{Orthonormalbasis}
-	\item{Matrixprodukt}
-	\item{injektiv}
-	\item{surjektiv}
-	\item{bijektiv}
-	\item{Additionstheoreme}
-	\item{Bild}
-	\item{Dimension}
-	\item{Diagonalmatrix}
-		\subitem{Eine quadratische ($n \times n$) Matrix, bei der alle Elemente außerhalb der Hauptdiagonale gleich 0 sind}
-		\subitem{Determinante ist das Produkt der Einträge auf der Hauptdiagonalen}
-		\subitem{Rang lässt sich direkt ablesen; Anzahl der Nicht-Null-Zeilen}
-		\subitem{Eigenwerte sind die Einträge auf der Hauptdiagonalen mit den kanonischen Einheitsvektoren als Eigenvektoren}
-	\item{Triagonalmatrix}
-	\item{charakteristisches Polynom}
-	\item{Eigenwert: nur von quadratischen Matrizen}
-		\subitem{$det(A-\lambda \cdot I)$}
-			\subsubitem{algebraische Vielfachheit: entspricht der Vielfachheit der Nullstellen im charakteristischen Polynom}
-			\subsubitem{mathematische Vielfachheit: Dimension des zugehörigen Eigenraums}
-	\item{Eigenvektor: nur von quadratischen Matrizen}
-		\subitem{$A\cdot x = \lambda \cdot x \rightarrow x=$ Eigenvektor; $\lambda=$ Eigenwert}
-	\item{Eigenraum}
-	\item{Diagonalisierbarkeit}
-		\subitem{Das charakteristische Polynom zerfällt vollständig in Linearfaktoren bzw. besitzt $n$ Nullstellen}
-		\subitem{Die geometrische und algebraische Vielfachheit stimmen überein}
-	\item{Laplace'scher Entwicklungssatz}
-	\item{Gram-Schmidt Verfahren}
-	\item{Schurzerlegung}
+	\item Erzeugendensystem
+	\item Norm: gegeben VR $V \mapsto \R$ heißt $||.||$ Norm, falls $\forall~ v, w \in V; \lambda \in \R$
+	\begin{enumerate}\itemsep0pt
+		\item $||v|| \geq 0, ||v||=0 \Leftrightarrow v=0$
+		\item $||\lambda \cdot v||=|\lambda|\cdot||v||$
+		\item $||v+w||\leq||v||+||w||$
+	\end{enumerate}
+	\item Darstellungsmatrix
+		\subitem Bsp: $f:E^2\rightarrow E^3 f(x,y)=\begin{pmatrix} y\\2x-2y\\3x\end{pmatrix}\Rightarrow M(f)_{\R_2}^{\R_3}=\begin{pmatrix}0 & 1 \\ 2 & -2 \\ 3 & 0\end{pmatrix}$
+		\subitem $M(f)_B^B = T_A^B \cdot M(f)_A^A \cdot T_B^A$
+		\subitem $M(f)_B^C = T_{E_3}^C \cdot M(f)_{E_2}^{E_3} \cdot T_B^{E_2}$
+	\item Transformationsmatrix: transformiert von einer Basis in eine andere
+		\subitem $T_A^E = A; ~~ T_B^E = B ~ \Rightarrow ~ T_B^A = T_E^A \cdot T_B^E = \left(T^B_A\right)^{-1}$
+		\subitem $T_E^A = (T_A^E)^{-1}; T_E^B=(T_B^E)^{-1} \Rightarrow T_A^B = T_E^B \cdot T_A^E = \left(T_B^A\right)^{-1} $
+		\subitem $v_B = T_A^B v_B$
+	\item Abbildungsmatrix: $A_{BE}$ „nimmt“ $v_B$, wendet $f$ darauf an und gibt $v_E$ zurück
+		\subitem $A_{EE}=\left(f(e_1) ~ f(e_2) ~ f(e_3)\right)$
+		\subitem $f(b_1)=A_{EE} \cdot b_{1_E} \quad f(b_2)=A_{EE}\cdot b_{2_E} \quad …$ 
+		\subitem $A_{BE}=\left([f(b_1)]_E ~ [f(b_2)]_E ~ [f(b_3)]_E\right)$
+		\subitem $A_{BC}=\left([f(b_1)]_C ~ [f(b_2)]_C ~ [f(b_3)]_C\right)$
+	\item Orthonormalbasis
+	\begin{enumerate}
+		\item Basisvektoren haben Norm 1 $\Rightarrow |b_{i}|={\sqrt {\langle b_{i},b_{i}\rangle }}=1 ~ \forall i\in\{1,…,n\}$
+		\item Basisvektoren sind paarweise orthogonal $\Rightarrow \langle b_{i},b_{j}\rangle =0~\forall i,j \in \{1,…,n\} \wedge i \neq j$
+	\end{enumerate}
+	\item surjektiv: für zwei Mengen $X, Y$ zeigt auf jedes y mind. ein x bzw.: \\
+	$\forall y\in Y\ \exists x\in X\colon \,f(x)=y$ \\
+	Auch rechtstotal genannt. 
+	\item injektiv: für zwei Mengen $X, Y$ zeigt auf jedes y höchstens ein x bzw.: \\
+	$\forall y\in Y\ (\exists !x\in X\colon \,f(x)=y\vee \neg (\exists x\in X\colon \,f(x)=y))$ \\
+	$\forall x_{1},x_{2}\in X\colon \,(f(x_{1})=f(x_{2})\Rightarrow x_{1}=x_{2})$ \\
+	$\forall x_{1},x_{2}\in X\colon \,(x_{1}\neq x_{2}\Rightarrow f(x_{1})\neq f(x_{2}))$ \\
+	Auch Linkseindeutig genannt.
+	\item bijektiv/eineindeutig: injektiv und surjektiv
+	\item span/lineare Hülle
+	\item Additionstheoreme
+	\item Bild
+	\item Dimension
+	\item Diagonalmatrix
+		\subitem Eine quadratische ($n \times n$) Matrix, bei der alle Elemente außerhalb der Hauptdiagonale gleich 0 sind
+		\subitem Rang lässt sich direkt ablesen; Anzahl der Nicht-Null-Zeilen
+		\subitem Eigenwerte sind die Einträge auf der Hauptdiagonalen mit den kanonischen Einheitsvektoren als Eigenvektoren
+	\item Triagonalmatrix
+	\item charakteristisches Polynom von A: $\xi_A=\det(A-\lambda I)$
+	\item Eigenwert: nur von quadratischen Matrizen
+		\subitem $\det(A-\lambda \cdot I)$ + Nullstellen bestimmen (z.B. Mitternachtsf.)
+			\subitem algebraische Vielfachheit: entspricht der V. der Nullstellen in $\xi_A$
+			\subitem geometrische V.: Dimension des zugehörigen Eigenraums
+			\subitem $1\leq m_g(\lambda)\leq m_a(\lambda)$
+	\item Eigenvektor: nur von quadratischen Matrizen
+		\subitem $A\cdot x = \lambda \cdot x \rightarrow x=$ Eigenvektor; $\lambda=$ Eigenwert
+		\subitem $\ker(A-\lambda\cdot I)$
+		\subitem $v$ ist ein Eigenvektor von $A^2$ zu $\lambda^2$
+		\subitem $v$ ist ein Eigenvektor von $A^{-1}$ zu $\frac{1}{\lambda}$
+	\item Eigenraum: $E_A(\lambda) = \left\lbrace k \cdot \vec{x} | k \in \R \right\rbrace ~~ \lambda=$ Eigenwert; $\vec{x}=$ Eigenvektor
+	\item Diagonalisierbarkeit
+		\subitem Das charakteristische Polynom zerfällt vollständig in Linearfaktoren bzw. besitzt $n$ Nullstellen
+		\subitem Die geometrische und algebraische Vielfachheit (der $\lambda$) stimmen überein
+	\item Diagonalisieren
+	\begin{enumerate}
+		\item Eigenwerte berechnen
+		\item Eigenvektoren berechnen
+		\item Matrix aus Eigenvektoren: $T=\left(v_1, v_2, … , v_n\right)$
+		\item $A=T D T^{-1} \Rightarrow D = T^{-1} A T$
+	\end{enumerate}
+	\item Schurzerlegung: $A=Q R Q^T \Rightarrow R=Q^T A Q$
 		\begin{enumerate}
-			\item{Eigenwerte berechnen}
-			\item{Eigenvektoren berechnen}
-			\item{Orthonormalbasis berechnen (Gram-Schmidt oder raten)}
+			\item Berechne einen Eigenwert $\lambda_1$ von $A_1=A$
+			\item Berechne einen Eigenvektor $v$ zu $\lambda_1$
+			\item Ergänze $v$ zu einer Orthonormalbasis $V_1$ des $\R^n$ (Gram-Schmidt oder raten)
+			\item Berechne $V_1^T A V_1 = \begin{pmatrix}
+				\lambda_1 & * & \cdots & * \\
+				\vdots & & A_2 \\
+				0 
+			\end{pmatrix}$ mit $A_2 \in \R^{(n-1)\times(n-1)}$
+			\item Setze $Q_1=V_1$
+			\item $\lambda_2$ und $v$ zu $A_2$ bestimmen
+			\item Ergänze $v$ zu einer Orthonotmalbasis $V_2$ des $\R^{n-1}$
+			\item Berechne $V_2^T A_2 V_2 = \begin{pmatrix}
+			\lambda_2 & * & \cdots & * \\
+			\vdots & & A_3 \\
+			0 
+			\end{pmatrix}$ mit $A_3 \in \R^{(n-2)\times(n-2)}$
+			\item Setze $Q_2 = Q_1 \cdot \begin{pmatrix}
+				1 & 0 \\
+				0 & V_2
+			\end{pmatrix}$
+			\item Wiederhole $(n-1)$ mal
+			\item Setze schließlich $Q=Q_{n+1}$. Es gilt $Q^T = Q^-1$ und die Schurzerlegung von A lautet $Q^T A Q = \begin{pmatrix}
+			\lambda_1 & * & * \\
+			& \ddots & \vdots \\ 
+			& & \lambda_n \end{pmatrix} = R$
 		\end{enumerate}
-	\item{Singulärwertzerlegung}
-	\item{Phasenportät}
-		\subitem{Harmonischer Oszilator}
-	\item{Stabilität}
+	\item Singulärwertzerlegung
+	\subitem $A=U S V^T$ mit $U \in \R^{m\times m}, V \in \R^{n\times n}, S\in \R^{m\times n}$
+	\subitem Singulärwerte: Diagonaleinträge von $S \sigma_1 \geq … \geq \sigma_k, k=\min(m,n)$ 
+	\begin{enumerate}
+		\item Berechne EW von $\lambda_j$ und EV $v_j$ von $A^T A$
+		\item Singulärwerte sind $\sigma_j=\sqrt{\lambda_j}$
+		\item Die rechten Singulärvektoren sind $V=(v_1,…,v_n)$
+		\item $A=U S V^T \Rightarrow U S = A V \Rightarrow \sigma_j u_j=A v_j$
+		\subitem $\sigma_j \neq 0: u_j = \frac{1}{\sigma_j} A v_j$
+		\subitem $\sigma_j = 0 : 0=\sigma_j u_j = A v_j$
+		$\Rightarrow$ wähle $v_j$ so, dass $u_j \perp u_j \forall k \neq j$
+	\end{enumerate}
+	\item Phasenportät
+		\subitem 
+		\subitem Harmonischer Oszilator
+	\item Stabilität
+	\item $A = T D T^{-1}; A^n=(T D T^{-1})^n=T D^n T^{-1}$
+	\item Basiswechsel
 \end{itemize}
-\includesvg[height=6cm]{Mplwp_trigonometric_functions_piaxis}
+
+\section{Matrizen}
+% ----------------------------------------------------------------------
+Tabelle aus mathematischen Objekten. $A=(a_{ij}) \in \mathbb K^{m\times n}$ hat $m$ Zeilen mit Index $i$ und $n$ Spalten mit Index $j$
+
+\subsection{Allgemeine Rechenregeln}
+\textbf{Merke:} Zeile vor Spalte! (Multiplikation, Indexreihenfolge, etc...)\\
+Grundlegend: $1 \cdot A=A$ \\
+Addition: $A+0=A$ \quad $A+B=B+A$ \quad $(A+B)+C=A+(B+C)$ \quad $\lambda (A+B) = \lambda A + \lambda B$ \\
+Multiplikation: $A \cdot B \ne B \cdot A$ (idR $\rightarrow$ nicht kommutativ) \quad Parameter: $A\in \K^{m\times r}$ und $B\in \K^{r\times n}$: $A \cdot B\in\mathbb K^{m\times n}$
+
+\subsection{Transponieren}
+Aka an der Hauptdiagonale spiegeln.\\
+Falls $A=(a_{ij})\ \in \mathbb K^{m\times n}$ gilt: $A^\top=(a_{ji})\ \in \mathbb K^{n\times m}$\\
+Regeln:
+\begin{tabular}{ll}
+$(A+B)^\top=A^\top+B^\top$ & $(A\cdot B)^\top=B^\top\cdot A^\top$\qquad \\ $(\lambda A)^\top=\lambda A^\top$ & $(A^\top)^\top=A$\\
+\end{tabular}
+\\
+$A\in \mathbb K^{n\times n}$ ist symmetrisch, falls $A=A^\top$\qquad ($\Rightarrow$ diagonalisierbar)\\
+$A\in \mathbb K^{n\times n}$ ist schiefsymmetrisch, falls $A=-A^\top$\\
+$A\in \mathbb K^{n\times n}$ ist orthogonal, falls:\\
+\qquad\ $AA^\top=I$\qquad $A^\top=A^{-1}$\qquad $\det A=\pm 1$
+
+\subsection{Inverse Matrix $A^{-1}\in \mathbb K^{n\times n}$}
+für die inverse Matrix $A^{-1}$ von $A\in \mathbb K^{n\times n}$ gilt: $A^{-1}\cdot A=I$\\
+$(A^{-1})^{-1}=A$ \qquad $(A\cdot B)^{-1}=B^{-1}\cdot A^{-1}$ \qquad $(A^\top)^{-1}=(A^{-1})^\top$\\
+\\
+$A \in \mathbb R^{n\times n}$ ist invertierbar, falls: $\det (A) \ne 0 \quad \lor \quad \mathrm{Rang}(A)=n$\\
+\\
+Berechnen von $A^{-1}$ nach Gauß:\\
+$A\cdot A^{-1}=I\quad\Rightarrow\quad (A|I)\overset{EZF}{\longrightarrow}(I|A^{-1})$
+
+\subsection{Elementare Zeilen/Spaltenumformungen(EZF/ESF)}
+$A \in \mathbb K^{m\times n}$ hat $m$ Zeilen $z_i\in \mathbb K^n$ und $n$ Spalten $s_j\in \mathbb K^m$
+\begin{itemize}\itemsep0pt
+	\item Addition ($\lambda\ne 0$):\quad $\lambda_1 z_1 + \lambda_2  z_2$ \quad / \quad $\lambda_1  s_1 + \lambda_2 s_2$
+	\item Vertauschen von Zeilen/Spalten
+	\item Multiplikation mit $\lambda\ne 0$: \quad $\lambda \cdot z$ \quad  / \quad  $\lambda \cdot s$
+\end{itemize}
+
+\subsection{Rang einer Matrix $A$}
+$A\in \mathbb K^{m\times n}$ \quad $r$: linear unabhängige Zeilen \quad $l$: „Nullzeilen“ \\ 
+$\mathrm{Rang}(A)=m-l=r$\\  
+Vorgehensweise: \\
+\textbf{Zeilenrang:} Bringe $A$ auf Zeilenstufenform $\Rightarrow$ Zeilenrang$(A) = \mathrm{Rang}(A)$ \\
+\textbf{Zeilenraum:}  $Z_A = $ Zeilen ungleich $0$ \\
+\textbf{Spaltenrang:} Bringe Matrix auf Spaltenstufenform $\Rightarrow$ Spaltenrang$(A)= \mathrm{Rang}(A)$ \\
+\textbf{Spaltenraum:} $S_A = $ Spalten ungleich $0$ \\
+$\operatorname {rang}(A)=\operatorname {rang}(A^{T}); ~\operatorname{rang}(A)\leq \min(m,n)$ \\
+\textbf{Kern:} $\ker(A) = \dme{x \in \mathbb R^n}{Ax= 0}$ \qquad $\mathrm{dim}(\ker(A))=n-r$ \\
+\quad $det(A)=0 ~\rightarrow$ Kern existiert \\
+	$A \cdot v=0 ~ \rightarrow ~ v=$ Kern \qquad LGS $\rightarrow$ Gaußelimination \\
+\textbf{Bild: } $A^T \Rightarrow EZF \Rightarrow $ Zeilen $(\not= 0)$ bilden die Basis vom Bild. Die (linear unabhängigen) Spalten von $A$ bilden eine Basis vom Bild.
+\subsection{Lineares Gleichungssystem LGS}
+Das LGS $Ax=b$ kurz $(A|b)$ mit $A\in \mathbb K^{m\times n}$, $x\in \mathbb K^n$, $b\in \mathbb K^m$ hat $m$ Gleichungen und $n$ Unbekannte.\\
+\\
+\textbf{Lösbarkeitskriterium:}\\
+Ein LGS $(A|b)$ ist genau dann lösbar, wenn: $\mathrm{rg}(A)=\mathrm{rg}(A|b))$\\
+Die Lösung des LGS $(A|b)$ hat $\dim{\ker A} = n-\mathrm{rg}(A)$ frei wählbare Parameter.\\
+\\
+Das homogene LGS: $(A|0)$ hat stets die triviale Lösung $0$\\
+Das LGS hat eine Lsg. wenn $\det A \not= 0$ \quad $\rightarrow \exists A^{-1}$ \\
+Summen und Vielfache der Lösungen von $(A|0)$ sind wieder Lösungen.
+
+\subsection{Determinante von $A\in \mathbb K^{n\times n}$: $\det(A)=|A|$}
+
+\begin{itemize}\itemsep0pt
+	\item Allgemein nur bei quadratische ($n \times n$) Matrizen
+	\item Für $2 \times 2$ Matrizen: $A=\begin{pmatrix}	a & b \\ c & d 	\end{pmatrix} ~ \rightarrow ~ det(A)=|A|=a \cdot d - c \cdot b$
+	\item Für $3 \times 3$ Matrizen: $A=\begin{pmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	a_{21} & a_{22} & a_{23} \\
+	a_{31} & a_{32} & a_{33}
+	\end{pmatrix}
+	\\\rightarrow det(A)=a_{11} \cdot a_{22} \cdot a_{33}+a_{12} \cdot a_{23} \cdot a_{31}+a_{13} \cdot a_{21} \cdot a_{32}-a_{31} \cdot a_{22} \cdot a_{a13}-a_{32} \cdot a_{23} \cdot a_{11}-a_{33} \cdot a_{21} \cdot a_{12}$
+	\item Dreiecksmatrix (und somit auch Diagonalmatrix): \\
+	Produkt aus Elementen der Hauptdiagonale: $\det(A)=\prod\limits_{i=1}^{n} a_{ii}$
+	\item $\det\begin{pmatrix}A&0\\C&D\end{pmatrix}=\det\begin{pmatrix}A&B\\0&D\end{pmatrix}=\det(A)\cdot\det(D)$
+	\item $\begin{vmatrix}\lambda_1&&* \\ &\ddots& \\ 0&&\lambda_n \end{vmatrix} = \lambda_1\cdot \ldots\cdot \lambda_n = \begin{vmatrix} \lambda_1&&0  \\  &\ddots& \\  *&&\lambda_n \end{vmatrix}$
+	\item $A=B \cdot C \quad \Rightarrow \quad |A|=|B| \cdot |C|$
+	\item $\det(A)=\det(A^\top)$
+	\item Hat $A$ zwei gleiche Zeilen/Spalten $\Rightarrow |A|=0$
+	\item $\det(\lambda A)=\lambda^n \det(A)$
+	\item Ist $A$ invertierbar, so gilt: $\det(A^{-1})=(\det(A))^{-1}$
+	\item $\det(AB) = \det(A) \det(B) = \det(B) \det(A) = \det(BA)$
+\end{itemize}
+
+\subsubsection{Laplacescher Entwicklungssatz}
+\begin{itemize}
+	\item Entwicklung nach der $j$-ten Spalte:
+	\subitem $\det(A)=\sum\limits_{i=1}^n (-1)^{i+j} \cdot a_{ij} \cdot det(A_{ij})$
+	\item Entwicklung nach der $i$-ten Zeile:
+	\subitem $\det(A)=\sum\limits_{j=1}^n (-1)^{i+j} \cdot a_{ij} \cdot det(A_{ij})$
+	\item $A_{ij}$ ist dabei die $(n-1)\times(n-1)$ Untermatrix von $A$, die durch Streichen der $i$-ten Zeile und $j$-ten Spalte entsteht.
+	\item $3\times 3$ Beispiel nach der 1. Zeile: ${\begin{vmatrix}a&b&c\\d&e&f\\g&h&i\end{vmatrix}}\\=a{\begin{vmatrix}e&f\\h&i\end{vmatrix}}-b{\begin{vmatrix}d&f\\g&i\end{vmatrix}}+c{\begin{vmatrix}d&e\\g&h\end{vmatrix}}=a(ei-fh)-b(di-fg)+c(dh-eg)$
+\end{itemize}
+
+\section{Vektorräume}
+% --------------------------------------------------------------
+Eine nichtleere Menge V mit zwei Verknüpfungen $+$ und $\cdot$ heißt $K$-VR.\\
+\textbf{Linear Unabhängig:}
+Vektoren heißen linear unabhängig, wenn aus: \\
+$\lambda_1 \vec v_1 + \lambda_2 \vec v_2 + \ldots + \lambda_n \vec v_n = \vec 0$ folgt, dass $\lambda_1 = \lambda_2 = \lambda_n = 0$
+
+\subsection{Basis (Jeder VR besitzt eine Basis!)}
+\label{sub:basis}
+Eine Teilmenge $B$ heißt Basis, von $V$ wenn gilt:
+\begin{itemize}\itemsep0pt
+	\item $\left\langle B \right\rangle =V$  $B$ erzeugt $V$
+	\item $B$ ist linear unabhängig
+\end{itemize}
+Eine Basis ist somit ein minimales Erzeugendensystem.          
+
+\subsection{Dimension}
+$n:= \abs{B} \in \mathbb N_0$  Dimension von $V$: $\dim (V) = n$ \\
+Mehr als $n$ Vektoren sind stehts linear abhängig. \\
+Für jeden UVR $U \subset V$ gilt: $\dim (U) < \dim (V)$ 
+
+\subsection{Skalarprodukt $\langle v,w \rangle$} 
+\begin{itemize}\itemsep0pt
+	\item Bilinear: $\langle \lambda v+v',w \rangle=\lambda\cdot\langle v,w \rangle + \langle v',w \rangle$
+	\item Symmetrisch: $\langle v,w \rangle=\langle w,v \rangle$
+	\item Positiv definit: $\langle v,v \rangle\ge0$ 
+	\item Im kartesischen Koordinatensystem: $\langle v,w \rangle=v_1 w_1+…+v_n w_n$
+\end{itemize}  
+Skalarprodukt bezüglich \textbf{symmetrischer, quadratischer} und \textbf{positiv definite} Matrix $A\in \mathbb R^{n\times n}$\\
+$\langle v,w \rangle_A=v^T A w$\\
+Matrix A positiv definit falls $\det (a_{11}) > 0 \land \det \left(\begin{matrix} a_11 & a_12\\ a_21 & a_22\end{matrix}\right) > 0 \land \dotsc \land \det (A)>0$   \\
+\textbf{Orthogonale Projektion} $p\in U^n$ von $q\in V^m$ auf $\sum u_i$:
+\begin{eqnarray*}
+	p=\sum_{i=1}^n \left\langle q, \frac{u_i}{\abs{u_i}}\right\rangle\frac{u_i}{\abs{u_i}} \quad = q - p^\perp
+\end{eqnarray*} 
+\textbf{Winkel} \quad 	$\left\langle \vec a, \vec b \right\rangle = a \cdot b \cdot \cos \phi$ \qquad
+$\phi = \arccos \enbrace{ \frac{\left\langle x, y\right\rangle }{\norm{x} \norm{y} } }$\\
+\textbf{Polynome} $<p(x),q(x)\geq\int\limits_{0}^{1}p(x)q(x)\,dx$
+
+\subsection{Vektorprodukt}
+$\vec a\times\vec b=\left( \begin{matrix} a_2b_3-a_3b_2\\a_3b_1-a_1b_3\\a_1b_2-a_2b_1\end{matrix}\right)$\qquad $\vec a,\vec b\ \in \mathbb R^3$\\
+\\
+$\vec a\times\vec b \perp \vec a,\vec b$ \qquad ($\vec a\times\vec b=0\ \Leftrightarrow\ \vec a;\vec b$\ linear abhängig.\\
+$||\vec a\times\vec b||=||\vec a||\cdot||\vec b||\cdot \sin\left(\measuredangle (\vec a;\vec b)\right)\mathrel{\widehat{=}}$\ Fläche des Parallelogramms\\
+Graßmann-Identität: $\vec a\times(\vec b \times \vec c)\equiv\vec b\cdot(\vec a \cdot \vec c)-\vec c\cdot(\vec a \cdot \vec b)$\\
+\\
+Spatprodukt:\\
+$[a,b,c]:=\left\langle \vec a\times\vec b,\vec c\right\rangle=\det (a,b,c)\mathrel{\widehat{=}}$\ Volumen des Spates.\\
+$[a,b,c]>0\ \Rightarrow\ a,b,c$\ bilden Rechtssystem \\ $[a,b,c]=0\ \Rightarrow\ a,b,c$\ linear abhängig\\ \\
+Orthogonale Zerlegung eine Vektors v längs a:\\
+$v = v_a + v_{a^\perp} \text{ mit } v_a = \frac{\left\langle v, a\right\rangle }{\left\langle a, a\right\rangle }*a \text{ und }	 v_{a^\perp} = v - v_a	$
+
+\subsection{Betrag von Vektoren}
+$||\vec a||=\sqrt{\langle\vec a,\vec a\rangle} =\sqrt{a_1^2+a_2^2+\ldots +a_n^2}$
+
+\subsection{Orthogonalität}
+\textbf{Gram-Schmidt Orthonormalisierungsvefahren von $n$ Vektoren:}
+\begin{enumerate}\itemsep0pt
+	\item $b_1=\frac{1}{\|v_1\|}v_1$
+	\item $b_{k+1}= \frac{1}{\|b_{k+1}^{'}\|b_{k+1}^{'}}$\ \ mit \ \ $b_{k+1}^{'}=v_{k+1}-\sum\limits_{i=1}^k \langle v_{k+1},b_i \rangle \cdot b_i$
+\end{enumerate}
+\textbf{Ausgleichsrechnung:} Experiment: $(t_1,y_1), \hdots, (t_n,y_n)$\\
+$f_1: \mathbb R \rightarrow \mathbb R, f_1(x) =1$ \qquad $f_2: \mathbb R \rightarrow \mathbb R, f_2(x) = x$
+\begin{eqnarray*}
+	\Rightarrow A = \begin{pmatrix}f_1(t_1) & f_2(t_1)\\\vdots & \vdots\\f_1(t_n) & f_2(t_n)\end{pmatrix} \qquad v = \begin{pmatrix}y_1\\\vdots\\y_n\end{pmatrix}
+\end{eqnarray*}
+$A^{\top}Ax=A^{\top}v \rightarrow $ LGS lösen nach x\\
+$f: \mathbb R \rightarrow \mathbb R, f(x) = x_1 f_1(x) + \hdots + x_n f_n(x)$
+\\
+\textbf{Orthogonale Projektion in UVR:} \quad \\
+1. Normiere Basis von $U$. \\
+2. $u = \left\langle b_1, v \right\rangle b_1 + \left\langle b_2, v \right\rangle b_2 \ldots \Rightarrow u^\perp = v - u$ \\
+Abstand von $v$ zu $U$: $\norm{u^{\perp}}$
+
+\section{Untervektorräume}
+Eine Teilmenge $U$ eines $K-$Vektorraums $V$ heißt Untervektorraum (UVR) von $V$, falls gilt:
+\begin{enumerate}\itemsep0pt
+	\item $U\neq \emptyset$ \qquad ($0\in U$)
+	\item $u+v\in U \quad \forall u,v\in U$
+	\item $\lambda u \in U \qquad \forall u\in U,\forall \lambda \in K$
+\end{enumerate}
+Wegen (3.) enthält ein UVR $U$ stets den Nullvektor $0$. Daher zeigt man (1.) meist, indem man $0\in U$ nachweist.\\
+\\
+\textbf{Triviale UVR}: $U=\{0\}$ mit $B = \emptyset$ \qquad $U=V$ mit $B_U=B_V$
+
+\section{Zeug das man in der Schule hätte lernen sollen}
+Mitternachtsformel (abc): $a x^2 + bx + c = 0$ \\
+$\rightarrow x_{1/2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ \\
+Andere Mitternachtsformel (pq): $x^2+p x+q=0 \\
+\rightarrow x_{1/2} = -\frac{p}{2} \pm \sqrt{\enbrace{\frac{p}{2}}^2-q}$ \\
+Doppelbruch: $\frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a d}{b c}$ \\
+Binomische Formeln:
+\begin{enumerate}\itemsep-1pt
+	\item $(a+b)^2=a^2+2ab+b^2$
+	\item $(a-b)^2=a^2-2ab+b^2$
+	\item $(a+b)(a-b)=a^2+b^2$
+	\item $(a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} \cdot b^k, n \in \N$
+	\item $(a \pm b)^3 = a^3 \pm 3 a^2 b + 3 a b^2 \pm b^3$
+\end{enumerate}
+Binomialkoeffizient: $\binom{n}{k} = \frac{n!}{(n-k)! k!}$ \\
+
+\includesvg[height=4cm]{Mplwp_trigonometric_functions_piaxis}
 \end{multicols}
 \end{document}
