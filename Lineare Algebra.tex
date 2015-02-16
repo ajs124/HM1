@@ -4,8 +4,8 @@
 % Dokumenteinstellungen
 % ======================================================================	
 
-% Dokumentklasse (Schriftgröße 8, DIN A4, Artikel)
-\documentclass[7pt,a4paper]{scrartcl}
+% Dokumentklasse (Schriftgröße 6, DIN A4, Artikel)
+\documentclass[6pt,a4paper]{scrartcl}
 
 % Pakete laden
 \usepackage[utf8]{inputenc}		% Zeichenkodierung: UTF-8 (für Umlautge)   
@@ -68,7 +68,7 @@
 	\item Lineare Abhängigkeit:
 		\subitem Matrix $M=\colvec{3}{v_1}{v_2}{v_3}~~ det(M)=0 \rightarrow $ unabhängig
 		\subitem $v_1*a=v_2 ~ ;a \in \R \rightarrow$ abhängig
-	\item Linearkombination
+	\item Linearkombination: Vektor, der sich durch gegebene Vektoren mitder Vektoraddition und skalarer Multiplikation ausdrücken lässt.
 	\item Linearität einer Abbildung; Bedingungen:
 	\begin{enumerate}
 		\item ist $f(0)=0$?
@@ -110,10 +110,8 @@
 	$\forall x_{1},x_{2}\in X\colon \,(x_{1}\neq x_{2}\Rightarrow f(x_{1})\neq f(x_{2}))$ \\
 	Auch Linkseindeutig genannt.
 	\item bijektiv/eineindeutig: injektiv und surjektiv
-	\item span/lineare Hülle
-	\item Additionstheoreme
-	\item Bild
-	\item Dimension
+	\item span/lineare Hülle: $\langle A\rangle =\left\{\left.\textstyle \sum \limits _{{i=1}}^{n}\alpha _{i}a_{i}\right|\alpha _{i}\in K,a_{i}\in A,n\in \mathbb{N} \right\}$
+	\item Dimensionssatz: $\operatorname{Bild}(f_A)+\dim(\ker(f_A))=dim(\R^n)$
 	\item Diagonalmatrix
 		\subitem Eine quadratische ($n \times n$) Matrix, bei der alle Elemente außerhalb der Hauptdiagonale gleich 0 sind
 		\subitem Rang lässt sich direkt ablesen; Anzahl der Nicht-Null-Zeilen
@@ -181,12 +179,20 @@
 		\subitem $\sigma_j = 0 : 0=\sigma_j u_j = A v_j$
 		$\Rightarrow$ wähle $v_j$ so, dass $u_j \perp u_j \forall k \neq j$
 	\end{enumerate}
+	\item DGL: $\dot{x}=A x, x(0)=x_0 ~~ \rightarrow ~ x(t)=e^{t A} x_0 \qquad
+	e^{t A}=\sum\limits_{k=0}^\infty \frac{t^k A^k}{k!}$
+	\begin{enumerate}
+		\item Fall $A$ diagonal $\Rightarrow A=\begin{pmatrix}
+		a_1 \\ & \ddots \end{pmatrix} \Rightarrow e^{t A}=\begin{pmatrix}
+		e^{a_1 t} \\ & \ddots \\ & & e^{a_n t}
+		\end{pmatrix}$ \\
+		$N$: obere Dreiecksmatrix ohne Einträge auf der Diagonalen (nilpotent). Außerdem $D N = -N = N D \Rightarrow e^{(D+N)t} e^{Dt} e^{Nt} \quad e^{t A}=e^{t(D+N)}=e^{t D} (I+t N)$
+		\item Fall A diagonalisierbar, also $A = S D S^{-1} \\\Rightarrow e^{t A}=e^{t(S D S^{-1})}=…=S e^{D t} S^{-1}$
+		\item Fall $A$ ist obere Dreiecksmatrix: Jordanblock
+	\end{enumerate}
 	\item Phasenportät
-		\subitem 
-		\subitem Harmonischer Oszilator
 	\item Stabilität
 	\item $A = T D T^{-1}; A^n=(T D T^{-1})^n=T D^n T^{-1}$
-	\item Basiswechsel
 \end{itemize}
 
 \section{Matrizen}
@@ -197,11 +203,12 @@ Tabelle aus mathematischen Objekten. $A=(a_{ij}) \in \mathbb K^{m\times n}$ hat 
 \textbf{Merke:} Zeile vor Spalte! (Multiplikation, Indexreihenfolge, etc...)\\
 Grundlegend: $1 \cdot A=A$ \\
 Addition: $A+0=A$ \quad $A+B=B+A$ \quad $(A+B)+C=A+(B+C)$ \quad $\lambda (A+B) = \lambda A + \lambda B$ \\
-Multiplikation: $A \cdot B \ne B \cdot A$ (idR $\rightarrow$ nicht kommutativ) \quad Parameter: $A\in \K^{m\times r}$ und $B\in \K^{r\times n}$: $A \cdot B\in\mathbb K^{m\times n}$
+Multiplikation: $A \cdot B \ne B \cdot A$ (idR $\rightarrow$ nicht kommutativ)\\
+Parameter: $A\in \K^{m\times r}$ und $B\in \K^{r\times n}$: $A \cdot B\in\mathbb K^{m\times n}$
 
-\subsection{Transponieren}
-Aka an der Hauptdiagonale spiegeln.\\
-Falls $A=(a_{ij})\ \in \mathbb K^{m\times n}$ gilt: $A^\top=(a_{ji})\ \in \mathbb K^{n\times m}$\\
+\subsection{Transponieren und Eigenschaften}
+Aka. an der Hauptdiagonale spiegeln.\\
+Falls $A=(a_{ij})\ \in \mathbb K^{m\times n}$ gilt: $A^\top=(a_{ji})\ \in \K^{n\times m}$\\
 Regeln:
 \begin{tabular}{ll}
 $(A+B)^\top=A^\top+B^\top$ & $(A\cdot B)^\top=B^\top\cdot A^\top$\qquad \\ $(\lambda A)^\top=\lambda A^\top$ & $(A^\top)^\top=A$\\
@@ -212,21 +219,20 @@ $A\in \mathbb K^{n\times n}$ ist schiefsymmetrisch, falls $A=-A^\top$\\
 $A\in \mathbb K^{n\times n}$ ist orthogonal, falls:\\
 \qquad\ $AA^\top=I$\qquad $A^\top=A^{-1}$\qquad $\det A=\pm 1$
 
-\subsection{Inverse Matrix $A^{-1}\in \mathbb K^{n\times n}$}
-für die inverse Matrix $A^{-1}$ von $A\in \mathbb K^{n\times n}$ gilt: $A^{-1}\cdot A=I$\\
-$(A^{-1})^{-1}=A$ \qquad $(A\cdot B)^{-1}=B^{-1}\cdot A^{-1}$ \qquad $(A^\top)^{-1}=(A^{-1})^\top$\\
-\\
-$A \in \mathbb R^{n\times n}$ ist invertierbar, falls: $\det (A) \ne 0 \quad \lor \quad \mathrm{Rang}(A)=n$\\
-\\
-Berechnen von $A^{-1}$ nach Gauß:\\
-$A\cdot A^{-1}=I\quad\Rightarrow\quad (A|I)\overset{EZF}{\longrightarrow}(I|A^{-1})$
-
 \subsection{Elementare Zeilen/Spaltenumformungen(EZF/ESF)}
 $A \in \mathbb K^{m\times n}$ hat $m$ Zeilen $z_i\in \mathbb K^n$ und $n$ Spalten $s_j\in \mathbb K^m$
 \begin{itemize}\itemsep0pt
 	\item Addition ($\lambda\ne 0$):\quad $\lambda_1 z_1 + \lambda_2  z_2$ \quad / \quad $\lambda_1  s_1 + \lambda_2 s_2$
 	\item Vertauschen von Zeilen/Spalten
 	\item Multiplikation mit $\lambda\ne 0$: \quad $\lambda \cdot z$ \quad  / \quad  $\lambda \cdot s$
+\end{itemize}
+
+\subsection{Inverse Matrix $A^{-1}\in \mathbb K^{n\times n}$}
+\begin{itemize}\itemsep0pt
+	\item für die inverse Matrix $A^{-1}$ von $A\in \mathbb K^{n\times n}$ gilt: $A^{-1}\cdot A=I$
+	$(A^{-1})^{-1}=A$ \qquad $(A\cdot B)^{-1}=B^{-1}\cdot A^{-1}$ \qquad $(A^\top)^{-1}=(A^{-1})^\top$
+	\item $A \in \mathbb R^{n\times n}$ ist invertierbar, falls: $\det (A) \ne 0 \quad \lor \quad \mathrm{Rang}(A)=n$
+	\item Berechnen von $A^{-1}$ nach Gauß: $A\cdot A^{-1}=I\quad\Rightarrow\quad (A|I)\overset{EZF}{\longrightarrow}(I|A^{-1})$
 \end{itemize}
 
 \subsection{Rang einer Matrix $A$}
@@ -241,7 +247,7 @@ $\operatorname {rang}(A)=\operatorname {rang}(A^{T}); ~\operatorname{rang}(A)\le
 \textbf{Kern:} $\ker(A) = \dme{x \in \mathbb R^n}{Ax= 0}$ \qquad $\mathrm{dim}(\ker(A))=n-r$ \\
 \quad $det(A)=0 ~\rightarrow$ Kern existiert \\
 	$A \cdot v=0 ~ \rightarrow ~ v=$ Kern \qquad LGS $\rightarrow$ Gaußelimination \\
-\textbf{Bild: } $A^T \Rightarrow EZF \Rightarrow $ Zeilen $(\not= 0)$ bilden die Basis vom Bild. Die (linear unabhängigen) Spalten von $A$ bilden eine Basis vom Bild.
+\textbf{Bild: } $A^T \Rightarrow EZF \Rightarrow $ Zeilen $(\not= 0)$ bilden Basis von Bild. Die (linear unabhängigen) Spalten von $A$ bilden eine Basis vom Bild. $\operatorname{Bild}(f_A)=\operatorname{span}(v_1\cdot a_1,v_2\cdot a_2)$
 \subsection{Lineares Gleichungssystem LGS}
 Das LGS $Ax=b$ kurz $(A|b)$ mit $A\in \mathbb K^{m\times n}$, $x\in \mathbb K^n$, $b\in \mathbb K^m$ hat $m$ Gleichungen und $n$ Unbekannte.\\
 \\
@@ -308,15 +314,15 @@ Mehr als $n$ Vektoren sind stehts linear abhängig. \\
 Für jeden UVR $U \subset V$ gilt: $\dim (U) < \dim (V)$ 
 
 \subsection{Skalarprodukt $\langle v,w \rangle$} 
-\begin{itemize}\itemsep0pt
+\begin{enumerate}\itemsep0pt
 	\item Bilinear: $\langle \lambda v+v',w \rangle=\lambda\cdot\langle v,w \rangle + \langle v',w \rangle$
 	\item Symmetrisch: $\langle v,w \rangle=\langle w,v \rangle$
 	\item Positiv definit: $\langle v,v \rangle\ge0$ 
-	\item Im kartesischen Koordinatensystem: $\langle v,w \rangle=v_1 w_1+…+v_n w_n$
-\end{itemize}  
-Skalarprodukt bezüglich \textbf{symmetrischer, quadratischer} und \textbf{positiv definite} Matrix $A\in \mathbb R^{n\times n}$\\
+\end{enumerate}  
+Im kartesischen Koordinatensystem: $\langle v,w \rangle=v_1 w_1+…+v_n w_n$ \\
+Bei \textbf{symmetrischer, quadratischer} \& \textbf{positiv definite} Matrix $A\in \R^{n\times n}$\\
 $\langle v,w \rangle_A=v^T A w$\\
-Matrix A positiv definit falls $\det (a_{11}) > 0 \land \det \left(\begin{matrix} a_11 & a_12\\ a_21 & a_22\end{matrix}\right) > 0 \land \dotsc \land \det (A)>0$   \\
+$A$ positiv definit falls $\det (a_{11}) > 0 \land \det \left(\begin{matrix} a_11 & a_12\\ a_21 & a_22\end{matrix}\right) > 0 \land … \land \det (A)>0$   \\
 \textbf{Orthogonale Projektion} $p\in U^n$ von $q\in V^m$ auf $\sum u_i$:
 \begin{eqnarray*}
 	p=\sum_{i=1}^n \left\langle q, \frac{u_i}{\abs{u_i}}\right\rangle\frac{u_i}{\abs{u_i}} \quad = q - p^\perp
@@ -328,8 +334,9 @@ $\phi = \arccos \enbrace{ \frac{\left\langle x, y\right\rangle }{\norm{x} \norm{
 \subsection{Vektorprodukt}
 $\vec a\times\vec b=\left( \begin{matrix} a_2b_3-a_3b_2\\a_3b_1-a_1b_3\\a_1b_2-a_2b_1\end{matrix}\right)$\qquad $\vec a,\vec b\ \in \mathbb R^3$\\
 \\
-$\vec a\times\vec b \perp \vec a,\vec b$ \qquad ($\vec a\times\vec b=0\ \Leftrightarrow\ \vec a;\vec b$\ linear abhängig.\\
+$\vec a\times\vec b \perp \vec a,\vec b$ \qquad ($\vec a\times\vec b=0\ \Leftrightarrow\ \vec a;\vec b$\ linear abhängig.)\\
 $||\vec a\times\vec b||=||\vec a||\cdot||\vec b||\cdot \sin\left(\measuredangle (\vec a;\vec b)\right)\mathrel{\widehat{=}}$\ Fläche des Parallelogramms\\
+Im $\R^n: {\vec a}_{1}={\begin{pmatrix}a_{{11}}\\a_{{21}}\\\vdots \\a_{{n1}}\end{pmatrix}},\ {\vec a}_{2}={\begin{pmatrix}a_{{12}}\\a_{{22}}\\\vdots \\a_{{n2}}\end{pmatrix}},\ \dots ,\ {\vec a}_{{n-1}}={\begin{pmatrix}a_{{1\,(n-1)}}\\a_{{2\,(n-1)}}\\\vdots \\a_{{n\,(n-1)}}\end{pmatrix}}\in \R^n $ gilt ${\vec a}_{1}\times {\vec a}_{2}\times \cdots \times {\vec a}_{{n-1}}=\det {\begin{pmatrix}{\vec e}_{1}&a_{{11}}&\cdots &a_{{1(n-1)}}\\{\vec e}_{2}&a_{{21}}&\cdots &a_{{2(n-1)}}\\\vdots &\vdots &\ddots &\vdots \\{\vec e}_{n}&a_{{n1}}&\dots &a_{{n(n-1)}}\end{pmatrix}}={\begin{vmatrix}{\vec e}_{1}&a_{{11}}&\cdots &a_{{1(n-1)}}\\{\vec e}_{2}&a_{{21}}&\cdots &a_{{2(n-1)}}\\\vdots &\vdots &\ddots &\vdots \\{\vec e}_{n}&a_{{n1}}&\dots &a_{{n(n-1)}}\end{vmatrix}}$
 Graßmann-Identität: $\vec a\times(\vec b \times \vec c)\equiv\vec b\cdot(\vec a \cdot \vec c)-\vec c\cdot(\vec a \cdot \vec b)$\\
 \\
 Spatprodukt:\\
